@@ -1,0 +1,7 @@
+{
+  "name": "kip_clean",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}
