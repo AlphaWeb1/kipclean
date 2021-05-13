@@ -1,0 +1,60 @@
+<ion-content [fullscreen]="true">
+  <div class="auth-main fancy-main-1">
+    <div class="auth-main-header">
+      <ion-label class="back-button" routerLink="/home">
+        <ion-icon name="return-up-back-outline"></ion-icon>
+      </ion-label>
+    </div>
+    <div class="auth-inner-wrapper">
+      <div class="auth-main-header">
+        <ion-card-subtitle>Kip Clean</ion-card-subtitle>
+        <ion-card-title>Hi there,</ion-card-title>
+      </div>
+      <div class="auth-main-body">
+        <div class="auth-body-text">
+          Lets give you a clean and easy start into Kip Clean.
+        </div>
+        <form [formGroup]="registrationForm" class="reg-form-main">
+          <div class="form-input-wrapper">
+            <div class="input-inner">
+              <ion-item class="reg-form-input-item">
+                <ion-icon class="input-icon float-label" name="person-circle"></ion-icon>
+                <ion-input class="input reg-form-input" type="text" placeholder="First Name" formControlName="firstName" required></ion-input>
+              </ion-item>
+            </div>
+            <div class="input-inner">
+              <ion-item class="reg-form-input-item">
+                <ion-icon class="input-icon float-label" name="person-circle"></ion-icon>
+                <ion-input class="input reg-form-input" type="text" placeholder="Last Name" formControlName="lastName" required></ion-input>
+              </ion-item>
+            </div>
+            <div class="input-inner">
+              <ion-item class="reg-form-input-item">
+                <ion-icon class="input-icon float-label" name="call"></ion-icon>
+                <ion-input class="input reg-form-input" type="tel" placeholder="Phone Numnber" formControlName="phone" required></ion-input>
+              </ion-item>
+            </div>
+            <div class="input-inner">
+              <ion-item class="reg-form-input-item">
+                <ion-icon class="input-icon float-label" name="mail"></ion-icon>
+                <ion-input class="input reg-form-input" type="email" placeholder="Email" formControlName="email" required></ion-input>
+              </ion-item>
+            </div>
+            <div class="input-inner">
+              <ion-item class="reg-form-input-item">
+                <ion-icon class="input-icon float-label" name="person-circle"></ion-icon>
+                <ion-input class="input reg-form-input" name="password" type="password" placeholder="Password" formControlName="password" required></ion-input>
+              </ion-item>
+            </div>
+            <div class="input-inner">
+                <ion-button class="reg-form-button" [disabled]="!registrationForm.valid || inProcesing" (click)="onRegister()">
+                  <span *ngIf="!inProcesing">Register</span>
+                  <ion-spinner name="lines-small" *ngIf="inProcesing"></ion-spinner>
+                </ion-button>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</ion-content>
