@@ -24,3 +24,100 @@
 @import "~@ionic/angular/css/text-alignment.css";
 @import "~@ionic/angular/css/text-transformation.css";
 @import "~@ionic/angular/css/flex-utils.css";
+
+.fancy-main-1 {
+    border-radius: 0rem 0rem 11rem 0rem;
+    box-shadow: #9f9f9f 1rem 2rem 2rem 1rem;
+}
+
+/** Buttons **/
+.back-button {
+    font-size: 30px;
+    letter-spacing: 2rem;
+    line-height: 3rem;
+    font-weight: 800;
+    cursor: pointer;
+}
+.back-button:hover, .back-button:active, .back-button:focus {
+    padding: 0.5rem 0.6rem 0.3rem;
+    border-radius: 6rem;
+    box-shadow: #aaaaaa 2px 2px 2px 1px;
+}
+
+/** Homepage and auth page styling **/
+.home-main, .auth-main{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    padding: 5vh 1rem 5vh 1rem;
+    background-color: #8c8c8c; 
+    min-height: 100vh;
+}
+
+.home-inner-wrapper, .auth-inner-wrapper{
+    width: 100%;
+    height: auto;
+    padding: 1rem 1.5rem;
+    display: flex;
+    flex-direction: column;
+    .home-main-header, .auth-main-header{
+      ion-card-subtitle, ion-card-title{
+        margin: 0.8rem 0.3rem;
+        font-size: 2.2rem;
+      }
+      ion-card-subtitle{
+        color: #f6f6f6;
+        font-size: 1.5rem;
+      }
+    }
+    .auth-main-body{
+        padding: 0.5rem 0.3rem;
+    }
+    .home-main-text , .auth-body-text{
+        text-align: justify;
+        line-height: 1.7rem;
+        letter-spacing: 1.1px;
+        font-size: 1.2rem;
+        font-weight: 500;
+    }
+    .home-footer{
+      position: fixed;
+      width: 83%;
+      bottom: 10vh;
+    }
+}
+.reg-form-main {
+    padding: 0.4rem;
+    margin-top: 0.5rem;
+    margin-bottom: 0.5rem;
+    .form-input-wrapper {
+        padding: 1rem 0.5rem;
+        width: 100%;
+        min-height: 9vh;
+        .input-inner {
+            display: flex;
+            flex-direction: row;
+            flex-wrap: nowrap;
+            justify-content: space-between;
+            margin: 1rem 0rem 1rem;
+        }
+    }
+}
+.reg-form-input-item {
+    border-radius: 1.2rem;
+    width: 100%;
+}
+.reg-form-button {
+    width: 100%;
+    border-radius: 1.2rem;
+    background-color: #333333 !important;
+    --background-color: #333333 !important;
+}
+
+.main-app{
+    background-color: #8cd5a0ac;
+}
+.full-top-container{
+    width: 100%;
+    height: 80vh;
+}

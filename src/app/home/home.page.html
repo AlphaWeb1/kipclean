@@ -1,20 +1,30 @@
-<ion-header [translucent]="true">
-  <ion-toolbar>
-    <ion-title>
-      Blank
-    </ion-title>
-  </ion-toolbar>
-</ion-header>
 
 <ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">Blank</ion-title>
-    </ion-toolbar>
-  </ion-header>
-
-  <div id="container">
-    <strong>Ready to create an app?</strong>
-    <p>Start with Ionic <a target="_blank" rel="noopener noreferrer" href="https://ionicframework.com/docs/components">UI Components</a></p>
+  <div class="home-main">
+    <div class="home-inner-wrapper">
+      <div class="home-image-wrapper">
+        <ion-thumbnail>
+          <ion-img src="assets/images/waste-img.png"></ion-img>
+        </ion-thumbnail>
+      </div>
+      <div class="home-main-header">
+        <ion-card-subtitle>Kip Clean</ion-card-subtitle>
+        <ion-card-title>Collaboration</ion-card-title>
+      </div>
+      <div class="home-main-text">
+        Keep close to Nature's heart... and break clear away, once in awhile,
+        and climb a mountain or spend a week in the woods. Wash your spirit clean.
+      </div>
+    </div>
+    <div class="home-footer">
+      <ion-segment>
+        <ion-segment-button class="home-footer-button" value="register" routerLink="/register">
+          Register
+        </ion-segment-button>
+        <ion-segment-button class="home-footer-button" value="signin" routerLink="/login">
+          Sign In
+        </ion-segment-button>
+      </ion-segment>
+    </div>
   </div>
 </ion-content>
