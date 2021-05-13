@@ -43,13 +43,13 @@ export class AuthenticationService {
   }
 
   async checkUser() {
-    const result = await Storage.get({ key: 'cvdUser' });
+    const result = await Storage.get({ key: 'kclUser' });
     const user = JSON.parse(result.value);
     return user;
   }
 
   async checkAccessToken() {
-    const result = await Storage.get({ key: 'cvdToken' });
+    const result = await Storage.get({ key: 'kclToken' });
     const accessToken = JSON.parse(result.value);
     if (accessToken) {
       this.loginState.next(true);
@@ -104,14 +104,14 @@ export class AuthenticationService {
 
   async storeUser(userInfo) {
     await Storage.set({
-      key: 'cvdUser',
+      key: 'kclUser',
       value: JSON.stringify(userInfo)
     });
   }
 
   async storeAccessToken(token) {
     await Storage.set({
-      key: 'cvdToken',
+      key: 'kclToken',
       value: JSON.stringify(token)
     });
   }

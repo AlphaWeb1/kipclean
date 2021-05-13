@@ -12,4 +12,8 @@ export class HomePage {
     private router: Router
   ) {}
 
+  toggleHomeButton(){
+
+  }
+
 }

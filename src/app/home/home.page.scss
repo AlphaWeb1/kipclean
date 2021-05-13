@@ -39,10 +39,14 @@ ion-segment{
   background: #2c2c2c !important;
   color: #ffffff !important;
   border-radius: 1rem !important;
-  .home-footer-button{
+  .home-footer-button, .home-footer-button:focus, .home-footer-button:active{
     background: #ffffff !important;
     color: #2c2c2c !important;
     border-radius: 1rem !important;
 
+  }
+  .home-footer-button.inactive, .home-footer-button.inactive button {
+    background: #2c2c2c !important;
+    color: #ffffff !important;
   }
 }

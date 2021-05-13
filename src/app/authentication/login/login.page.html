@@ -7,13 +7,41 @@
     </div>
     <div class="auth-inner-wrapper">
       <div class="auth-main-header">
-        <ion-card-subtitle>Kip Clean</ion-card-subtitle>
+        <ion-card-subtitle>Sign In</ion-card-subtitle>
         <ion-card-title>Welcome back,</ion-card-title>
       </div>
       <div class="auth-main-body">
         <div class="auth-body-text">
           Login and continue where you left off.
         </div>
+        <form #loginForm="ngForm" class="reg-form-main">
+          <div class="form-controls-wrapper">
+            <div class="input-wrapper">
+              <div class="input-inner">
+                <ion-item class="reg-form-input-item">
+                  <ion-icon class="input-icon float-label" name="mail"></ion-icon>
+                  <ion-input class="input reg-form-input" name="email" type="email" placeholder="Email" [(ngModel)]="email" required></ion-input>
+                </ion-item>
+              </div>
+            </div>
+            <div class="input-wrapper">
+              <div class="input-inner">
+                <ion-item class="reg-form-input-item">
+                  <ion-icon class="input-icon float-label" name="key"></ion-icon>
+                  <ion-input class="input reg-form-input" name="password" type="password" placeholder="Password" [(ngModel)]="password" required></ion-input>
+                </ion-item>
+              </div>
+            </div>
+            <div class="input-wrapper">
+              <div class="input-inner">
+                <ion-button class="reg-form-button" [disabled]="!loginForm.valid || inProcess" (click)="onLogin()">
+                  <span *ngIf="!inProcess">Sign In</span>
+                  <ion-spinner name="lines-small" *ngIf="inProcess"></ion-spinner>
+                </ion-button>
+              </div>
+            </div>
+          </div>
+        </form>
       </div>
     </div>
   </div>

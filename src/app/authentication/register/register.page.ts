@@ -28,6 +28,11 @@ export class RegisterPage implements OnInit {
   ngOnInit() {
     this.initRegistrationForm();
   }
+  
+
+  get regFormControl() {
+    return this.registrationForm.controls;
+  }
 
   onRegister() {
     this.inProcess = true;

@@ -7,7 +7,7 @@
     </div>
     <div class="auth-inner-wrapper">
       <div class="auth-main-header">
-        <ion-card-subtitle>Kip Clean</ion-card-subtitle>
+        <ion-card-subtitle>Register</ion-card-subtitle>
         <ion-card-title>Hi there,</ion-card-title>
       </div>
       <div class="auth-main-body">
@@ -15,42 +15,79 @@
           Lets give you a clean and easy start into Kip Clean.
         </div>
         <form [formGroup]="registrationForm" class="reg-form-main">
-          <div class="form-input-wrapper">
-            <div class="input-inner">
-              <ion-item class="reg-form-input-item">
-                <ion-icon class="input-icon float-label" name="person-circle"></ion-icon>
-                <ion-input class="input reg-form-input" type="text" placeholder="First Name" formControlName="firstName" required></ion-input>
-              </ion-item>
+          <div class="form-controls-wrapper">
+            <div class="input-wrapper">
+              <div class="input-inner">
+                <ion-item class="reg-form-input-item">
+                  <ion-icon class="input-icon float-label" name="person-circle"></ion-icon>
+                  <ion-input class="input reg-form-input" type="text" placeholder="First Name" formControlName="firstName" required></ion-input>
+                </ion-item>
+              </div>
+              <span class="err-text" *ngIf="(regFormControl.firstName.touched) && regFormControl.firstName.errors?.required">
+                First Name is required
+              </span>
             </div>
-            <div class="input-inner">
-              <ion-item class="reg-form-input-item">
-                <ion-icon class="input-icon float-label" name="person-circle"></ion-icon>
-                <ion-input class="input reg-form-input" type="text" placeholder="Last Name" formControlName="lastName" required></ion-input>
-              </ion-item>
+            <div class="input-wrapper">
+              <div class="input-inner">
+                <ion-item class="reg-form-input-item">
+                  <ion-icon class="input-icon float-label" name="person-circle"></ion-icon>
+                  <ion-input class="input reg-form-input" type="text" placeholder="Last Name" formControlName="lastName" required></ion-input>
+                </ion-item>
+              </div>
+              <span class="err-text" *ngIf="(regFormControl.lastName.touched) && regFormControl.lastName.errors?.required">
+                Last Name is required
+              </span>
             </div>
-            <div class="input-inner">
-              <ion-item class="reg-form-input-item">
-                <ion-icon class="input-icon float-label" name="call"></ion-icon>
-                <ion-input class="input reg-form-input" type="tel" placeholder="Phone Numnber" formControlName="phone" required></ion-input>
-              </ion-item>
+            <div class="input-wrapper">
+              <div class="input-inner">
+                <ion-item class="reg-form-input-item">
+                  <ion-icon class="input-icon float-label" name="call"></ion-icon>
+                  <ion-input class="input reg-form-input" type="tel" placeholder="Phone Numnber" formControlName="phone" required></ion-input>
+                </ion-item>
+              </div>
+              <span class="err-text" *ngIf="(regFormControl.phone.touched) && regFormControl.phone.errors?.required">
+                Phone Number is required
+              </span>
             </div>
-            <div class="input-inner">
-              <ion-item class="reg-form-input-item">
-                <ion-icon class="input-icon float-label" name="mail"></ion-icon>
-                <ion-input class="input reg-form-input" type="email" placeholder="Email" formControlName="email" required></ion-input>
-              </ion-item>
+            <div class="input-wrapper">
+              <div class="input-inner">
+                <ion-item class="reg-form-input-item">
+                  <ion-icon class="input-icon float-label" name="mail"></ion-icon>
+                  <ion-input class="input reg-form-input" type="email" placeholder="Email" formControlName="email" required></ion-input>
+                </ion-item>
+              </div>
+              <span class="err-text" *ngIf="(regFormControl.email.touched) && regFormControl.email.errors?.required">
+                Email is required
+              </span>
+              <span class="err-text" *ngIf="regFormControl.email.touched && regFormControl.email.errors?.email">
+                Enter a valid email address
+              </span>
+              <span class="err-text" *ngIf="regFormControl.email.touched && regFormControl.email.errors?.invalidEmail">
+                Enter a valid email (Gmail, Yahoo, Hotmail and Outlook.)
+              </span>
             </div>
-            <div class="input-inner">
-              <ion-item class="reg-form-input-item">
-                <ion-icon class="input-icon float-label" name="person-circle"></ion-icon>
-                <ion-input class="input reg-form-input" name="password" type="password" placeholder="Password" formControlName="password" required></ion-input>
-              </ion-item>
+            <div class="input-wrapper">
+              <div class="input-inner">
+                <ion-item class="reg-form-input-item">
+                  <ion-icon class="input-icon float-label" name="key"></ion-icon>
+                  <ion-input class="input reg-form-input" name="password" type="password" placeholder="Password" formControlName="password" required></ion-input>
+                </ion-item>
+              </div>
+              <span class="err-text" *ngIf="(regFormControl.password.touched) && regFormControl.password.errors?.required">
+                Password is required
+              </span>
+              <span class="err-text" *ngIf="regFormControl.password.touched && regFormControl.password.errors?.invalidPassword">
+                Password should have minimum 8 characters, at least 1 uppercase letter, 1 lowercase
+                letter, 1 number and 1 special character
+              </span>
             </div>
-            <div class="input-inner">
-                <ion-button class="reg-form-button" [disabled]="!registrationForm.valid || inProcesing" (click)="onRegister()">
-                  <span *ngIf="!inProcesing">Register</span>
-                  <ion-spinner name="lines-small" *ngIf="inProcesing"></ion-spinner>
-                </ion-button>
+            <div class="input-wrapper">
+              <div class="input-inner">
+                  <ion-button class="reg-form-button" [disabled]="!registrationForm.valid || inProcess" (click)="onRegister()">
+                    <span *ngIf="!inProcess">Register</span>
+                    <ion-spinner name="lines-small" *ngIf="inProcess"></ion-spinner>
+                  </ion-button>
+              </div>
             </div>
           </div>
         </form>
