@@ -4,7 +4,7 @@
 
 export const environment = {
   production: false,
-  apiUrl: 'https://test.nairatree.com/api/v1/'
+  apiUrl: 'http://kipclean.giftpadi.com/api/v1/'
 };
 
 /*

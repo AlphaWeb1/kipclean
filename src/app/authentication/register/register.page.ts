@@ -37,7 +37,7 @@ export class RegisterPage implements OnInit {
   onRegister() {
     this.inProcess = true;
     const payload: User = {
-      firstname: this.registrationForm.value.firstName,
+      first_name: this.registrationForm.value.firstName,
       surname: this.registrationForm.value.lastName,
       email: this.registrationForm.value.email,
       phone: this.registrationForm.value.phone,

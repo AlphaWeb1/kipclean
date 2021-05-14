@@ -76,7 +76,7 @@ export class AuthenticationService {
 
   register(payload: User) {
     return this.http.post<ApiDataResponse>(
-      `${environment.apiUrl}auth/register`,
+      `${environment.apiUrl}auth/signup`,
       payload
     );
   }
@@ -90,7 +90,7 @@ export class AuthenticationService {
 
   verifyPasswordResetCode(email: string, code: string) {
     return this.http.post<ApiDataResponse>(
-      `${environment.apiUrl}auth/change-password`,
+      `${environment.apiUrl}auth/reset-password`,
       { email, code }
     );
   }
