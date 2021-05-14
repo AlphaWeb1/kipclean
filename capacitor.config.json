@@ -1,5 +1,5 @@
 {
-  "appId": "io.ionic.starter",
+  "appId": "com.kipclean.app",
   "appName": "kip_clean",
   "bundledWebRuntime": false,
   "npmClient": "npm",
