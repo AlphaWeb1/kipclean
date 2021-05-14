@@ -33,7 +33,7 @@ export class ChangePasswordPage implements OnInit {
     });
   }
   
-  onResetPassword() {
+  onChangePassword() {
     this.inProcess = true;
     this.authService.resetPassword(this.resetId, this.password).subscribe(
       res => {
