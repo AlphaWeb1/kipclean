@@ -83,10 +83,10 @@
             </div>
             <div class="input-wrapper">
               <div class="input-inner">
-                  <ion-button class="reg-form-button" [disabled]="!registrationForm.valid || inProcess" (click)="onRegister()">
+                  <button class="reg-form-button" [disabled]="!registrationForm.valid || inProcess" (click)="onRegister()">
                     <span *ngIf="!inProcess">Register</span>
                     <ion-spinner name="lines-small" *ngIf="inProcess"></ion-spinner>
-                  </ion-button>
+                  </button>
               </div>
             </div>
           </div>

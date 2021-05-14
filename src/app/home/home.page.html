@@ -18,10 +18,10 @@
     </div>
     <div class="home-footer">
       <ion-segment>
-        <ion-segment-button class="home-footer-button" value="register" routerLink="/register">
+        <ion-segment-button class="home-footer-button" value="register" [ngClass]="{'inactive': !registerClicked === true}" (click)="toggleHomeButton($event)" routerLink="/register">
           Register
         </ion-segment-button>
-        <ion-segment-button class="home-footer-button inactive" value="signin" routerLink="/login">
+        <ion-segment-button class="home-footer-button inactive" value="signin" [ngClass]="{'inactive': registerClicked === true}" (click)="toggleHomeButton($event)" routerLink="/login">
           Sign In
         </ion-segment-button>
       </ion-segment>

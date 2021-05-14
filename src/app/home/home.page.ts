@@ -8,12 +8,15 @@ import { Router } from '@angular/router';
 })
 export class HomePage {
 
+  registerClicked: boolean = true;
+
   constructor(
     private router: Router
   ) {}
 
-  toggleHomeButton(){
-
+  toggleHomeButton($event){
+    // console.log($event.target.value);
+    this.registerClicked = $event.target.value === 'signin' ? false : true;
   }
 
 }
