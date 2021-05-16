@@ -1,0 +1,49 @@
+.dash-head-titled-text {
+    margin-bottom: 0.4rem;
+    font-size: 12px;
+}
+.dash-tile-wrapper{
+    display: flex;
+    justify-content: space-around;
+    width: 100%;
+    flex-flow: wrap;
+    padding: 1rem 0rem 0rem;
+    .dash-tile{
+        width: 45%;
+        box-shadow: #cfcfcf 1px 1px 4px 0px;
+        border-radius: 1rem;
+        display: flex;
+        padding: 1.5rem;
+        justify-content: space-around;
+        margin-bottom: 1.2rem;
+        .dash-tile-body{
+            font-weight: 700;
+            ion-label{
+                font-size: 22px;
+            }
+        }
+    }
+    .dash-tile.tile-success {
+        background: #cbfdc2;
+    }
+    .dash-tile.tile-orange {
+        background: #fddac2;
+    }
+    .dash-tile.tile-primary {
+        background: #a4a4ff;
+    }
+    .dash-tile.tile-danger {
+        background: #fb6f6f;
+    }
+}
+.dash-task-list{
+    margin-bottom: 1rem;
+    .dash-list-head{
+        display: flex;
+        justify-content: space-between;
+        padding: 0rem 0.5rem 0.5rem;
+        h3, a{
+            font-weight: 700;
+        }
+    }
+}

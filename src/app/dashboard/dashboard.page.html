@@ -1,9 +1,115 @@
-<ion-header>
-  <ion-toolbar>
-    <ion-title>dashboard</ion-title>
-  </ion-toolbar>
-</ion-header>
 
-<ion-content>
+<ion-content [fullscreen]="true">
+  <div class="dashboard-main">
+    <div class="dashboar-header">
+      <ion-tab-bar slot="bottom" class="custom-tabbar">
+        <ion-tab-button tab="" class="inherit-background">
+          <ion-icon name="calendar" color="dark"></ion-icon>
+          <!-- <ion-badge>6</ion-badge> -->
+        </ion-tab-button>
+        <ion-tab-button class="inherit-background">
+          <ion-text class="dash-head-titled-text">next collection</ion-text>
+          <ion-label class="text-bold">Tuesday, 24, Nov</ion-label>
+        </ion-tab-button>
+        <ion-tab-button tab="search" class="inherit-background">
+          <ion-icon name="search" color="dark"></ion-icon>
+        </ion-tab-button>
+      </ion-tab-bar>
 
+    </div>
+    <div class="dashboad-body">
+      <div class="dash-tile-wrapper">
+        <div class="dash-tile tile-orange">
+          <ion-icon name="card" slot="start"></ion-icon>
+          <div class="dash-tile-body">
+            <ion-label>Deposit</ion-label>
+            <ion-text></ion-text>
+          </div>
+        </div>
+        <div class="dash-tile tile-primary">
+            <ion-icon name="trash-bin" slot="start"></ion-icon>
+            <div class="dash-tile-body">
+              <ion-label>Order</ion-label>
+              <ion-text></ion-text>
+            </div>
+        </div>
+        <div class="dash-tile tile-success">
+          <ion-icon name="person" slot="start"></ion-icon>
+          <div class="dash-tile-body">
+            <ion-label>Profile</ion-label>
+            <ion-text></ion-text>
+          </div>
+        </div>
+        <div class="dash-tile tile-danger">
+          <ion-icon name="chatbox-ellipses" slot="start"></ion-icon>
+          <div class="dash-tile-body">
+            <ion-label>Review</ion-label>
+            <ion-text></ion-text>
+          </div>
+        </div>
+      </div>
+      <div class="dash-task-list">
+        <div class="dash-list-head">
+          <h3>Waste Collections</h3>
+          <h5>
+            <a>View All</a>
+          </h5>
+        </div>
+        <div class="dash list-body">
+          <ion-list>
+            <ion-item>
+              <ion-label>Pokémon Yellow</ion-label>
+              <ion-icon slot="end" name="ellipsis-horizontal"></ion-icon>
+            </ion-item>
+            <ion-item>
+              <ion-label>Mega Man X</ion-label>
+              <ion-icon slot="end" name="ellipsis-horizontal"></ion-icon>
+            </ion-item>
+            <ion-item>
+              <ion-label>The Legend of Zelda</ion-label>
+              <ion-icon slot="end" name="ellipsis-horizontal"></ion-icon>
+            </ion-item>
+            <ion-item>
+              <ion-label>Pac-Man</ion-label>
+              <ion-icon slot="end" name="ellipsis-horizontal"></ion-icon>
+            </ion-item>
+            <ion-item>
+              <ion-label>Super Mario World</ion-label>
+              <ion-icon slot="end" name="ellipsis-horizontal"></ion-icon>
+            </ion-item>
+          </ion-list>
+        </div>
+      </div>
+    </div>
+    <div class="dashboard-footer">
+        <ion-tab-bar slot="bottom" class="custom-tabbar">
+          <ion-tab-button tab="home" class="custom-tab inherit-background active" routerLink="/dashboad" color="dark">
+            <ion-icon name="home" color="dark"></ion-icon>
+            <ion-label color="dark">Home</ion-label>
+            <!-- <ion-badge>6</ion-badge> -->
+          </ion-tab-button>
+      
+          <ion-tab-button tab="wallet" class="custom-tab inherit-background" routerLink="/wallet">
+            <ion-icon name="wallet" color="dark"></ion-icon>
+            <ion-label>Wallet</ion-label>
+          </ion-tab-button>
+      
+          <ion-tab-button tab="new-order" class="inherit-background">
+            <ion-fab-button color="dark">
+              <ion-icon name="add"></ion-icon>
+            </ion-fab-button>
+          </ion-tab-button>
+      
+          <ion-tab-button tab="profile" class="custom-tab inherit-background" routerLink="/profile">
+            <ion-icon name="person" color="dark"></ion-icon>
+            <ion-label>Profile</ion-label>
+          </ion-tab-button>
+      
+          <ion-tab-button tab="logout" class="custom-tab inherit-background">
+            <ion-icon name="log-out" color="dark"></ion-icon>
+            <ion-label>Logout</ion-label>
+          </ion-tab-button>
+        </ion-tab-bar>
+    </div>
+  </div>
 </ion-content>

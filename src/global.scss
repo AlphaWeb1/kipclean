@@ -29,6 +29,10 @@
     border-radius: 0rem 0rem 11rem 0rem;
     box-shadow: #9f9f9f 1rem 2rem 2rem 1rem;
 }
+.fancy-main-2 {
+    border-radius: 0rem 0rem 12rem 12rem;
+    box-shadow: #9f9f9f 0rem 3rem 3rem 0rem;
+}
 
 /** Buttons **/
 .back-button {
@@ -45,7 +49,7 @@
 }
 
 /** Homepage and auth page styling **/
-.home-main, .auth-main{
+.home-main, .auth-main, .dashboard-main{
     display: flex;
     flex-direction: column;
     width: 100%;
@@ -86,6 +90,7 @@
       bottom: 10vh;
     }
 }
+
 .reg-form-main {
     padding: 0.4rem;
     margin-top: 0.5rem;
@@ -124,6 +129,43 @@
 .reg-form-button:hover, .reg-form-button:focus, .reg-form-button:active {
     background: #676767;
     --background-color: #676767;
+}
+
+/** Dashboard CSS Handler**/
+.dashboard-main{
+    padding: 3vh 1.5rem 3vh 1.5rem;
+    background: linear-gradient(359deg, #8c8c8c, #ffffff);
+    .dashboard-header, .dashboard-footer, .dashboard-body{
+        width: 100%;
+    }
+    .dashboard-body{
+        // margin: 1rem 0rem;
+        display: flex;
+        flex-direction: column;
+        flex-wrap: column;
+        justify-content: space-around;
+    }
+    .dashboard-footer{
+        position: fixed;
+        bottom: 7vh;
+        width: calc(100% - 3rem);
+        .custom-tabbar {
+            background: #8c8c8c;
+            min-height: 9vh;
+            border: none;
+            overflow-x: auto;
+            ion-tab-button.custom-tab.active, ion-tab-button.custom-tab:hover, ion-tab-button.custom-tab:active {
+                border-bottom: solid 1px;
+                border-width: thin;
+                background: #e1e1e1;
+                border-radius: 1rem;
+            }
+        }
+    }
+}
+
+.inherit-background{
+    background: inherit;
 }
 /** Error Css Handler **/
 .err-text {
