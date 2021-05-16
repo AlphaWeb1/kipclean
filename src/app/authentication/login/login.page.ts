@@ -16,7 +16,7 @@ export class LoginPage implements OnInit {
   inProcess: boolean;
 
   constructor(
-    private auth: AuthenticationService,
+    private authService: AuthenticationService,
     private util: UtilService,
     private router: Router
   ) { }
@@ -27,7 +27,7 @@ export class LoginPage implements OnInit {
   
   onLogin() {
     this.inProcess = true;
-    this.auth.login(this.email, this.password).subscribe(
+    this.authService.login(this.email, this.password).subscribe(
       res => {
         this.inProcess = false;
         if (res.status === 'success') {
