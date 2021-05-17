@@ -37,7 +37,7 @@ export class AuthenticationService {
 
     if (user) {
       this.user.next(user);
-      // this.router.navigateByUrl('/dashboard');
+      // this.router.navigateByUrl('/main');
       return;
     }
   }
@@ -54,7 +54,7 @@ export class AuthenticationService {
     if (accessToken) {
       this.loginState.next(true);
       this.accessToken.next(accessToken);
-      this.router.navigateByUrl('/dashboard');
+      this.router.navigateByUrl('/main');
     }
   }
 

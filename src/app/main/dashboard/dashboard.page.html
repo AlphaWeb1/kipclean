@@ -1,46 +1,45 @@
-
 <ion-content [fullscreen]="true">
   <div class="dashboard-main">
-    <div class="dashboar-header">
+    <div class="dashboard-header">
       <ion-tab-bar slot="bottom" class="custom-tabbar">
         <ion-tab-button tab="" class="inherit-background">
           <ion-icon name="calendar" color="dark"></ion-icon>
           <!-- <ion-badge>6</ion-badge> -->
         </ion-tab-button>
-        <ion-tab-button class="inherit-background">
+        <ion-tab-button class="inherit-background" routerLink="dashboard/order/1">
           <ion-text class="dash-head-titled-text">next collection</ion-text>
-          <ion-label class="text-bold">Tuesday, 24, Nov</ion-label>
+          <ion-label class="text-bold keep-inline">Tuesday, 24, Nov</ion-label>
         </ion-tab-button>
         <ion-tab-button tab="search" class="inherit-background">
           <ion-icon name="search" color="dark"></ion-icon>
         </ion-tab-button>
       </ion-tab-bar>
-
+      <ion-icon name="notifications" class="notification"></ion-icon>
     </div>
     <div class="dashboad-body">
       <div class="dash-tile-wrapper">
-        <div class="dash-tile tile-orange">
+        <div class="dash-tile tile-orange" (click)="topUpWallet($event)">
           <ion-icon name="card" slot="start"></ion-icon>
           <div class="dash-tile-body">
             <ion-label>Deposit</ion-label>
             <ion-text></ion-text>
           </div>
         </div>
-        <div class="dash-tile tile-primary">
+        <div class="dash-tile tile-primary" routerLink="/main/tabs/order">
             <ion-icon name="trash-bin" slot="start"></ion-icon>
             <div class="dash-tile-body">
               <ion-label>Order</ion-label>
               <ion-text></ion-text>
             </div>
         </div>
-        <div class="dash-tile tile-success">
+        <div class="dash-tile tile-success" routerLink="/main/tabs/profile">
           <ion-icon name="person" slot="start"></ion-icon>
           <div class="dash-tile-body">
             <ion-label>Profile</ion-label>
             <ion-text></ion-text>
           </div>
         </div>
-        <div class="dash-tile tile-danger">
+        <div class="dash-tile tile-danger" routerLink="/main/tabs/review">
           <ion-icon name="chatbox-ellipses" slot="start"></ion-icon>
           <div class="dash-tile-body">
             <ion-label>Review</ion-label>
@@ -50,66 +49,34 @@
       </div>
       <div class="dash-task-list">
         <div class="dash-list-head">
-          <h3>Waste Collections</h3>
-          <h5>
-            <a>View All</a>
-          </h5>
+          <h4>Waste Collections</h4>
+          <h6><a routerLink="/main/tabs/waste-collection">View All</a></h6>
         </div>
         <div class="dash list-body">
           <ion-list>
             <ion-item>
-              <ion-label>Pokémon Yellow</ion-label>
+              <ion-label>Lekki Phase 1 <small>(Monday, 12, June)</small></ion-label>
               <ion-icon slot="end" name="ellipsis-horizontal"></ion-icon>
             </ion-item>
             <ion-item>
-              <ion-label>Mega Man X</ion-label>
+              <ion-label>Lekki Phase 11 <small>(Tuesday, 13, June)</small></ion-label>
               <ion-icon slot="end" name="ellipsis-horizontal"></ion-icon>
             </ion-item>
             <ion-item>
-              <ion-label>The Legend of Zelda</ion-label>
+              <ion-label>Ubeju Lekki <small>(Wednesday, 14, June)</small></ion-label>
               <ion-icon slot="end" name="ellipsis-horizontal"></ion-icon>
             </ion-item>
             <ion-item>
-              <ion-label>Pac-Man</ion-label>
+              <ion-label>Epe <small>(Saturday, 10, June)</small></ion-label>
               <ion-icon slot="end" name="ellipsis-horizontal"></ion-icon>
             </ion-item>
             <ion-item>
-              <ion-label>Super Mario World</ion-label>
+              <ion-label>Victoria Island <small>(Wednesdy, 07, June)</small></ion-label>
               <ion-icon slot="end" name="ellipsis-horizontal"></ion-icon>
             </ion-item>
           </ion-list>
         </div>
       </div>
-    </div>
-    <div class="dashboard-footer">
-        <ion-tab-bar slot="bottom" class="custom-tabbar">
-          <ion-tab-button tab="home" class="custom-tab inherit-background active" routerLink="/dashboad" color="dark">
-            <ion-icon name="home" color="dark"></ion-icon>
-            <ion-label color="dark">Home</ion-label>
-            <!-- <ion-badge>6</ion-badge> -->
-          </ion-tab-button>
-      
-          <ion-tab-button tab="wallet" class="custom-tab inherit-background" routerLink="/wallet">
-            <ion-icon name="wallet" color="dark"></ion-icon>
-            <ion-label>Wallet</ion-label>
-          </ion-tab-button>
-      
-          <ion-tab-button tab="new-order" class="inherit-background">
-            <ion-fab-button color="dark">
-              <ion-icon name="add"></ion-icon>
-            </ion-fab-button>
-          </ion-tab-button>
-      
-          <ion-tab-button tab="profile" class="custom-tab inherit-background" routerLink="/profile">
-            <ion-icon name="person" color="dark"></ion-icon>
-            <ion-label>Profile</ion-label>
-          </ion-tab-button>
-      
-          <ion-tab-button tab="logout" class="custom-tab inherit-background" (click)="logout()">
-            <ion-icon name="log-out" color="dark"></ion-icon>
-            <ion-label>Logout</ion-label>
-          </ion-tab-button>
-        </ion-tab-bar>
     </div>
   </div>
 </ion-content>

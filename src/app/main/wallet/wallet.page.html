@@ -1,0 +1,50 @@
+<ion-content [fullscreen]="true">
+  <div class="dashboard-main">
+    <div class="dashboard-header">
+      <ion-label class="back-button" routerLink="/main/tabs/dashboard">
+        <ion-icon name="return-up-back-outline"></ion-icon>
+      </ion-label>
+      <h4>Wallet</h4>
+      <ion-icon name="notifications" class="notification"></ion-icon>
+    </div>
+    <div class="dashboad-body">
+      <div class="wallet-tile-wrapper">
+        <h5 class="wallet-tile-title">Balance</h5>
+        <h3 class="wallet-tile-amount">$1000.00</h3>
+        <ion-button class="topup-button" color="dark" (click)="topUpWallet($event)">
+          <ion-icon name="arrow-up-circle"></ion-icon>
+          Top Up
+        </ion-button>
+      </div>
+      <div class="dash-task-list">
+        <div class="dash-list-head">
+          <h4>Transactions</h4>
+        </div>
+        <div class="dash list-body">
+          <ion-list>
+            <ion-item>
+              <ion-label>Pokémon Yellow</ion-label>
+              <ion-icon slot="end" name="ellipsis-horizontal"></ion-icon>
+            </ion-item>
+            <ion-item>
+              <ion-label>Mega Man X</ion-label>
+              <ion-icon slot="end" name="ellipsis-horizontal"></ion-icon>
+            </ion-item>
+            <ion-item>
+              <ion-label>The Legend of Zelda</ion-label>
+              <ion-icon slot="end" name="ellipsis-horizontal"></ion-icon>
+            </ion-item>
+            <ion-item>
+              <ion-label>Pac-Man</ion-label>
+              <ion-icon slot="end" name="ellipsis-horizontal"></ion-icon>
+            </ion-item>
+            <ion-item>
+              <ion-label>Super Mario World</ion-label>
+              <ion-icon slot="end" name="ellipsis-horizontal"></ion-icon>
+            </ion-item>
+          </ion-list>
+        </div>
+      </div>
+    </div>
+  </div>
+</ion-content>

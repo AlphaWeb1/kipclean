@@ -133,40 +133,52 @@
 
 /** Dashboard CSS Handler**/
 .dashboard-main{
-    padding: 3vh 1.5rem 3vh 1.5rem;
-    background: linear-gradient(359deg, #8c8c8c, #ffffff);
+    padding: 5vh 1rem 2vh 1rem;
+    background: linear-gradient(359deg, #d4d4d4, #ffffff);
     .dashboard-header, .dashboard-footer, .dashboard-body{
         width: 100%;
     }
     .dashboard-body{
-        // margin: 1rem 0rem;
         display: flex;
         flex-direction: column;
         flex-wrap: column;
         justify-content: space-around;
     }
-    .dashboard-footer{
-        position: fixed;
-        bottom: 7vh;
-        width: calc(100% - 3rem);
-        .custom-tabbar {
-            background: #8c8c8c;
-            min-height: 9vh;
-            border: none;
-            overflow-x: auto;
-            ion-tab-button.custom-tab.active, ion-tab-button.custom-tab:hover, ion-tab-button.custom-tab:active {
-                border-bottom: solid 1px;
-                border-width: thin;
-                background: #e1e1e1;
-                border-radius: 1rem;
-            }
+}
+.dash-task-list{
+    margin-bottom: 1rem;
+    .dash-list-head{
+        display: flex;
+        justify-content: space-between;
+        padding: 0rem 0.5rem 0.5rem;
+        h4, a{
+            font-weight: 700;
         }
     }
 }
+ion-content{
+    .dashboard-main{
+        padding: 5vh 1rem 2vh 1rem;
+        background: linear-gradient(359deg, #d4d4d4, #ffffff);
+    }
+}
 
+.notification {
+    position: absolute;
+    right: 0.5rem;
+    top: 0.5rem;
+    font-size: 18px;
+}
 .inherit-background{
     background: inherit;
 }
+.text-bold{
+    font-weight: 700;
+}
+.keep-inline{
+    white-space: nowrap;
+}
+
 /** Error Css Handler **/
 .err-text {
     color: #ff3333;

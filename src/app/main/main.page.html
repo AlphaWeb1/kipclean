@@ -1,0 +1,32 @@
+<ion-content>
+    <ion-tabs class="dashboard-footer">
+      <ion-tab-bar slot="bottom" class="custom-tabbar">
+        <ion-tab-button tab="dashboard" class="custom-tab inherit-background" [ngClass]="{'active': router.url == '/main/tabs/dashboard'}" color="dark">
+          <ion-icon name="home" color="dark"></ion-icon>
+          <ion-label color="dark">Home</ion-label>
+          <!-- <ion-badge>6</ion-badge> -->
+        </ion-tab-button>
+    
+        <ion-tab-button tab="wallet" class="custom-tab inherit-background" [ngClass]="{'active': router.url == '/main/tabs/wallet'}">
+          <ion-icon name="wallet" color="dark"></ion-icon>
+          <ion-label>Wallet</ion-label>
+        </ion-tab-button>
+    
+        <ion-tab-button class="inherit-background" (click)="orderRecycleBin($event)">
+          <ion-fab-button color="dark">
+            <ion-icon name="add"></ion-icon>
+          </ion-fab-button>
+        </ion-tab-button>
+    
+        <ion-tab-button tab="profile" class="custom-tab inherit-background" [ngClass]="{'active': router.url == '/main/tabs/profile'}" routerLink="/main/tabs/profile">
+          <ion-icon name="person" color="dark"></ion-icon>
+          <ion-label>Profile</ion-label>
+        </ion-tab-button>
+    
+        <ion-tab-button class="custom-tab inherit-background" (click)="logout()">
+          <ion-icon name="log-out" color="dark"></ion-icon>
+          <ion-label>Logout</ion-label>
+        </ion-tab-button>
+      </ion-tab-bar>
+    </ion-tabs>
+</ion-content>

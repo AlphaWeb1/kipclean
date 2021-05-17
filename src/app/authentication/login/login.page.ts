@@ -33,7 +33,7 @@ export class LoginPage implements OnInit {
         if (res.status === 'success') {
           this.email = null;
           this.password = null;
-          this.router.navigateByUrl('/dashboard');
+          this.router.navigateByUrl('/main');
         }
       }, err => {
         this.inProcess = false;

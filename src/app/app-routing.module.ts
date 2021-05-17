@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
+import { AuthenticationGuard } from './authentication/authentication.guard';
 
 const routes: Routes = [
   {
@@ -24,13 +25,15 @@ const routes: Routes = [
     loadChildren: () => import('./authentication/forgot-password/forgot-password.module').then( m => m.ForgotPasswordPageModule)
   },
   {
-    path: 'change-password',
+    path: 'change-password/:id',
     loadChildren: () => import('./authentication/change-password/change-password.module').then( m => m.ChangePasswordPageModule)
   },
   {
-    path: 'dashboard',
-    loadChildren: () => import('./dashboard/dashboard.module').then( m => m.DashboardPageModule)
+    path: 'main',
+    loadChildren: () => import('./main/main.module').then( m => m.MainPageModule),
+    canLoad: [AuthenticationGuard]
   },
+
 ];
 
 @NgModule({

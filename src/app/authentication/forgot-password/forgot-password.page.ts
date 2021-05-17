@@ -47,7 +47,7 @@ export class ForgotPasswordPage implements OnInit {
         this.inProcess = false;
         this.utilService.showToast(res.message);
         if (res.status === 'success') {
-          this.router.navigateByUrl(`/reset-password/${res.data.id}`);
+          this.router.navigateByUrl(`/change-password/${res.data.id}`);
         }
       }, err => {
         this.inProcess = false;
