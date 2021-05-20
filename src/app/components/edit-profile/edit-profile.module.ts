@@ -1,24 +1,23 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
-import { TopupModalComponent } from './topup-modal.component';
+import { EditProfileComponent } from './edit-profile.component';
 import { IonicModule } from '@ionic/angular';
-
-
 
 @NgModule({
   entryComponents: [],
   declarations: [
-    TopupModalComponent
+    EditProfileComponent
   ],
   imports: [
     CommonModule,
     FormsModule,
+    ReactiveFormsModule,
     IonicModule
   ],
   exports: [
-    TopupModalComponent
+    EditProfileComponent
   ]
 })
-export class TopupModalModule { }
+export class EditProfileModule { }

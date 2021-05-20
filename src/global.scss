@@ -48,6 +48,14 @@
     box-shadow: #aaaaaa 2px 2px 2px 1px;
 }
 
+.button-main {
+    background: #aaaaaa;
+    color: #111111 !important;
+    padding: 0.7rem;
+    cursor: pointer;
+    border-radius: 0.3rem;
+}
+
 /** Homepage and auth page styling **/
 .home-main, .auth-main, .dashboard-main{
     display: flex;
@@ -95,27 +103,30 @@
     padding: 0.4rem;
     margin-top: 0.5rem;
     margin-bottom: 0.5rem;
-    .form-controls-wrapper {
-        padding: 1rem 0.5rem;
+}
+.form-controls-wrapper {
+    padding: 1rem 0.5rem;
+    width: 100%;
+    min-height: 9vh;
+}
+.input-wrapper{
+    margin: 1rem 0rem 1rem;
+    display: flex;
+    flex-direction: column;
+    .input-inner {
         width: 100%;
-        min-height: 9vh;
-        .input-wrapper{
-            margin: 1rem 0rem 1rem;
-            display: flex;
-            flex-direction: column;
-            .input-inner {
-                width: 100%;
-                display: flex;
-                flex-direction: row;
-                flex-wrap: nowrap;
-                justify-content: space-between;
-            }
-        }
+        display: flex;
+        flex-direction: row;
+        flex-wrap: nowrap;
+        justify-content: space-between;
     }
 }
 .reg-form-input-item {
     border-radius: 1.2rem;
     width: 100%;
+    ion-icon {
+        margin-right: 1rem;
+    }
 }
 .reg-form-button {
     width: 100%;
@@ -162,6 +173,19 @@ ion-content{
         background: linear-gradient(359deg, #d4d4d4, #ffffff);
     }
 }
+.d-flex {
+    display: flex;
+}
+.flex-header {
+    display: flex;
+    justify-content: space-between;
+}
+.card-header-link{
+    font-size: 18px;
+}
+.icon-titled {
+    font-size: 1.7rem;
+}
 
 .notification {
     position: absolute;
@@ -175,8 +199,43 @@ ion-content{
 .text-bold{
     font-weight: 700;
 }
+.text-center {
+    text-align: center;
+}
 .keep-inline{
     white-space: nowrap;
+}
+
+/** Modal Style **/
+ion-modal#ion-overlay-2, ion-modal .modal-wrapper, ion-modal ion-backdrop, ion-modal .ion-page, ion-modal ion-content {
+    background: #0000004f !important;
+    --background: #0e0e0e1c !important;
+}
+
+/** Popover Style**/
+.popover-wrapper, .popover-wrapper.sc-ion-popover-md {
+    width: auto !important;
+    height: auto !important;
+}
+.popover-content, .popover-content.sc-ion-popover-md{
+    left: auto !important;
+    top: 1.5rem !important;
+    right: 0.5rem;
+    width: 89% !important;
+    height: auto;
+    max-height: 70vh !important;
+    overflow-y: auto !important;
+}
+.popover-arrow, .popover-arrow.sc-ion-popover-md {
+    top: 0.5rem !important;
+    right: 0.6rem !important;
+    width: 1rem !important;
+    height: 1rem !important;
+    border-left: 7px solid transparent;
+    border-right: 7px solid transparent;
+    border-bottom: 10px solid #ffffff;
+    position: fixed;
+    z-index: 10;
 }
 
 /** Error Css Handler **/

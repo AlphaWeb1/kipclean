@@ -34,7 +34,11 @@ export class LoginPage implements OnInit {
           this.email = null;
           this.password = null;
           this.router.navigateByUrl('/main');
-        }
+          this.util.showToast(res.message);
+        } 
+        // else {
+        //   this.util.showAlert(`Invalid Login Credentials`, res?.message);
+        // }
       }, err => {
         this.inProcess = false;
         this.util.showAlert(`Server Error`, err.error.message);

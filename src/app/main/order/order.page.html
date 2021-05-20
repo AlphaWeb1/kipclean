@@ -1,9 +1,41 @@
-<ion-header>
-  <ion-toolbar>
-    <ion-title>order</ion-title>
-  </ion-toolbar>
-</ion-header>
-
-<ion-content>
-
+<ion-content [fullscreen]="true">
+  <div class="order-main">
+    <div class="order-header">
+      <ion-label class="back-button" routerLink="/main/tabs/dashboard">
+        <ion-icon name="return-up-back-outline"></ion-icon>
+      </ion-label>
+      <ion-card-title>
+        My Order
+      </ion-card-title>
+    </div>
+    <div class="order-body">
+      <ion-list>
+        <ion-item>
+          <ion-icon slot="start" name="trash"></ion-icon>
+          <ion-label>1 Unit <small>($5,000.00)</small></ion-label>
+          <ion-icon slot="end" name="ellipsis-horizontal"></ion-icon>
+        </ion-item>
+        <ion-item>
+          <ion-icon slot="start" name="trash"></ion-icon>
+          <ion-label>2 Units <small>($10,000.00)</small></ion-label>
+          <ion-icon slot="end" name="ellipsis-horizontal"></ion-icon>
+        </ion-item>
+        <ion-item>
+          <ion-icon slot="start" name="trash"></ion-icon>
+          <ion-label>1 Unit <small>($4,000.00)</small></ion-label>
+          <ion-icon slot="end" name="ellipsis-horizontal"></ion-icon>
+        </ion-item>
+        <ion-item>
+          <ion-icon slot="start" name="trash"></ion-icon>
+          <ion-label>4 Units <small>($20,000.00)</small></ion-label>
+          <ion-icon slot="end" name="ellipsis-horizontal"></ion-icon>
+        </ion-item>
+        <ion-item>
+          <ion-icon slot="start" name="trash"></ion-icon>
+          <ion-label>2 Units <small>($10,000.00)</small></ion-label>
+          <ion-icon slot="end" name="ellipsis-horizontal"></ion-icon>
+        </ion-item>
+      </ion-list>
+    </div>
+  </div>
 </ion-content>

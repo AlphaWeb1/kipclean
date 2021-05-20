@@ -23,6 +23,14 @@ const routes: Routes = [
       {
         path: 'order',
         loadChildren: () => import('./order/order.module').then( m => m.OrderPageModule)
+      },
+      {
+        path: 'waste-collection',
+        loadChildren: () => import('./waste-collection/waste-collection.module').then( m => m.WasteCollectionPageModule)
+      },
+      {
+        path: 'feedbacks',
+        loadChildren: () => import('./feedbacks/feedbacks.module').then( m => m.FeedbacksPageModule)
       }
     ]
   },
@@ -31,10 +39,7 @@ const routes: Routes = [
     redirectTo: '/main/tabs/dashboard',
     pathMatch: 'full'
   },
-  {
-    path: 'waste-collection',
-    loadChildren: () => import('./waste-collection/waste-collection.module').then( m => m.WasteCollectionPageModule)
-  },
+
 ];
 
 @NgModule({

@@ -1,0 +1,75 @@
+
+<ion-content>
+  <div class="modal-main">
+    <div class="modal-body">
+      <div class="modal-title">
+        <ion-card-title>Edit Profile</ion-card-title>
+        <ion-button color="light" (click)="closeModal()">
+          <ion-icon name="close" slot="icon-only"></ion-icon>
+        </ion-button>
+      </div>
+      <form [formGroup]="updateForm" class="modal-form">
+        <div class="form-controls-wrapper">
+          <div class="input-wrapper">
+            <div class="input-inner">
+              <ion-item class="reg-form-input-item">
+                <ion-icon class="input-icon float-label" name="person-circle"></ion-icon>
+                <ion-input class="input reg-form-input" type="text" placeholder="First Name" formControlName="firstName" required></ion-input>
+              </ion-item>
+            </div>
+            <span class="err-text" *ngIf="(updateFormControl.firstName.touched) && updateFormControl.firstName.errors?.required">
+              First Name is required
+            </span>
+          </div>
+          <div class="input-wrapper">
+            <div class="input-inner">
+              <ion-item class="reg-form-input-item">
+                <ion-icon class="input-icon float-label" name="person-circle"></ion-icon>
+                <ion-input class="input reg-form-input" type="text" placeholder="Last Name" formControlName="lastName" required></ion-input>
+              </ion-item>
+            </div>
+            <span class="err-text" *ngIf="(updateFormControl.lastName.touched) && updateFormControl.lastName.errors?.required">
+              Last Name is required
+            </span>
+          </div>
+          <div class="input-wrapper">
+            <div class="input-inner">
+              <ion-item class="reg-form-input-item">
+                <ion-icon class="input-icon float-label" name="call"></ion-icon>
+                <ion-input class="input reg-form-input" type="tel" placeholder="Phone Numnber" formControlName="phone" required></ion-input>
+              </ion-item>
+            </div>
+            <span class="err-text" *ngIf="(updateFormControl.phone.touched) && updateFormControl.phone.errors?.required">
+              Phone Number is required
+            </span>
+          </div>
+          <div class="input-wrapper">
+            <div class="input-inner">
+              <ion-item class="reg-form-input-item">
+                <ion-icon class="input-icon float-label" name="mail"></ion-icon>
+                <ion-input class="input reg-form-input" type="email" placeholder="Email" formControlName="email" required readonly></ion-input>
+              </ion-item>
+            </div>
+            <span class="err-text" *ngIf="(updateFormControl.email.touched) && updateFormControl.email.errors?.required">
+              Email is required
+            </span>
+            <span class="err-text" *ngIf="updateFormControl.email.touched && updateFormControl.email.errors?.email">
+              Enter a valid email address
+            </span>
+            <span class="err-text" *ngIf="updateFormControl.email.touched && updateFormControl.email.errors?.invalidEmail">
+              Enter a valid email (Gmail, Yahoo, Hotmail and Outlook.)
+            </span>
+          </div>
+          <div class="input-wrapper">
+            <div class="input-inner">
+              <button class="reg-form-button"  [disabled]="!updateForm.valid || inProcess" (click)="onUpdateProfile()">
+                <span *ngIf="!inProcess">Save Changes</span>
+                <ion-spinner name="lines-small" *ngIf="inProcess"></ion-spinner>
+              </button>
+            </div>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+</ion-content>

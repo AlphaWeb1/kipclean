@@ -2,15 +2,14 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 
-import { TopupModalComponent } from './topup-modal.component';
 import { IonicModule } from '@ionic/angular';
 
+import { NotificationComponent } from './notification.component';
 
 
 @NgModule({
-  entryComponents: [],
   declarations: [
-    TopupModalComponent
+    NotificationComponent
   ],
   imports: [
     CommonModule,
@@ -18,7 +17,7 @@ import { IonicModule } from '@ionic/angular';
     IonicModule
   ],
   exports: [
-    TopupModalComponent
+    NotificationComponent
   ]
 })
-export class TopupModalModule { }
+export class NotificationModule { }

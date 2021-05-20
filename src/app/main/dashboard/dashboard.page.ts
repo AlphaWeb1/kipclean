@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { ModalController } from '@ionic/angular';
+import { ModalController, PopoverController } from '@ionic/angular';
+import { NotificationComponent } from 'src/app/components/notification/notification.component';
 
 import { TopupModalComponent } from 'src/app/components/topup-modal/topup-modal.component';
 import { AuthenticationService } from '../../services/authentication.service';
@@ -13,7 +14,8 @@ export class DashboardPage implements OnInit {
 
   constructor(
     private authService: AuthenticationService,
-    public popupModal: ModalController
+    public popupModal: ModalController,
+    public popoverDrop: PopoverController
   ) { }
 
   ngOnInit() {
@@ -28,5 +30,20 @@ export class DashboardPage implements OnInit {
       }
     });
     return await modal.present();
+  }
+
+  async showNotifications($event: any){
+    const popover = await this.popoverDrop.create({
+      component: NotificationComponent,
+      componentProps: {
+        sourceFired: 'client',
+        data: $event
+      }
+    });
+    return await popover.present();
+  }
+
+  async showCollectionSearch($event: any){
+    console.log('popup collection serch modal');
   }
 }
