@@ -1,0 +1,25 @@
+.order-main {
+    min-height: 100vh;
+    padding: 1rem;
+    display: flex;
+    flex-direction: column;
+    background: linear-gradient( 359deg, #a2a2a2, #ffffff);
+}
+.order-header {
+    margin: 1rem;
+    display: flex;
+    justify-content: space-between;
+    ion-card-title {
+        font-weight: 600;
+        padding-top: 0.7rem;
+    }
+}
+.order-head-title {
+    ion-icon {
+        margin-right: 0.5rem;
+        float: left;
+    }
+    span {
+        font-size: 18px;
+    }
+}

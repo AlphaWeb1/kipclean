@@ -1,0 +1,24 @@
+.popover-wrapper, .popover-wrapper.sc-ion-popover-md {
+    width: auto !important;
+    height: auto !important;
+}
+.popover-content, .popover-content.sc-ion-popover-md{
+    left: auto !important;
+    top: 1.5rem !important;
+    right: 0.5rem;
+    width: 89% !important;
+    height: auto;
+    max-height: 70vh !important;
+    overflow-y: auto !important;
+}
+.popover-arrow, .popover-arrow.sc-ion-popover-md {
+    top: 0.5rem !important;
+    right: 0.6rem !important;
+    width: 1rem !important;
+    height: 1rem !important;
+    border-left: 7px solid transparent;
+    border-right: 7px solid transparent;
+    border-bottom: 10px solid #ffffff;
+    position: fixed;
+    z-index: 10;
+}

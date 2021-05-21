@@ -1,9 +1,36 @@
-<ion-header>
-  <ion-toolbar>
-    <ion-title>waste-collection</ion-title>
-  </ion-toolbar>
-</ion-header>
-
-<ion-content>
-
+<ion-content [fullscreen]="true">
+  <div class="waste-main">
+    <div class="waste-header">
+      <ion-label class="back-button" routerLink="/main/tabs/dashboard">
+        <ion-icon name="return-up-back-outline"></ion-icon>
+      </ion-label>
+      <ion-card-title>
+        Waste Collection Dates
+      </ion-card-title>
+    </div>
+    <div class="waste-body">
+      <ion-list>
+        <ion-item>
+          <ion-label>Lekki Phase 1 <small>(Monday, 12, June)</small></ion-label>
+          <ion-icon slot="end" name="ellipsis-horizontal"></ion-icon>
+        </ion-item>
+        <ion-item>
+          <ion-label>Lekki Phase 11 <small>(Tuesday, 13, June)</small></ion-label>
+          <ion-icon slot="end" name="ellipsis-horizontal"></ion-icon>
+        </ion-item>
+        <ion-item>
+          <ion-label>Ubeju Lekki <small>(Wednesday, 14, June)</small></ion-label>
+          <ion-icon slot="end" name="ellipsis-horizontal"></ion-icon>
+        </ion-item>
+        <ion-item>
+          <ion-label>Epe <small>(Saturday, 10, June)</small></ion-label>
+          <ion-icon slot="end" name="ellipsis-horizontal"></ion-icon>
+        </ion-item>
+        <ion-item>
+          <ion-label>Victoria Island <small>(Wednesdy, 07, June)</small></ion-label>
+          <ion-icon slot="end" name="ellipsis-horizontal"></ion-icon>
+        </ion-item>
+      </ion-list>
+    </div>
+  </div>
 </ion-content>

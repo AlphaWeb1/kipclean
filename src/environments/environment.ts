@@ -4,7 +4,10 @@
 
 export const environment = {
   production: false,
-  apiUrl: 'http://kipclean.giftpadi.com/api/v1/'
+  apiUrl: 'http://kipclean.giftpadi.com/api/v1/',
+  paystackPK: {
+    key : 'ij9ik0'
+  }
 };
 
 /*

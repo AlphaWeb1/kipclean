@@ -2,23 +2,19 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 
-import { TopupModalComponent } from './topup-modal.component';
 import { IonicModule } from '@ionic/angular';
 
+import { FeedbacksPageRoutingModule } from './feedbacks-routing.module';
 
+import { FeedbacksPage } from './feedbacks.page';
 
 @NgModule({
-  entryComponents: [],
-  declarations: [
-    TopupModalComponent
-  ],
   imports: [
     CommonModule,
     FormsModule,
-    IonicModule
+    IonicModule,
+    FeedbacksPageRoutingModule
   ],
-  exports: [
-    TopupModalComponent
-  ]
+  declarations: [FeedbacksPage]
 })
-export class TopupModalModule { }
+export class FeedbacksPageModule {}

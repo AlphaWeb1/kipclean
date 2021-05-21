@@ -2,7 +2,7 @@
   <div class="dashboard-main">
     <div class="dashboard-header">
       <ion-tab-bar slot="bottom" class="custom-tabbar">
-        <ion-tab-button tab="" class="inherit-background">
+        <ion-tab-button tab="waste-collection" class="inherit-background" title="Waste collection dates">
           <ion-icon name="calendar" color="dark"></ion-icon>
           <!-- <ion-badge>6</ion-badge> -->
         </ion-tab-button>
@@ -10,11 +10,11 @@
           <ion-text class="dash-head-titled-text">next collection</ion-text>
           <ion-label class="text-bold keep-inline">Tuesday, 24, Nov</ion-label>
         </ion-tab-button>
-        <ion-tab-button tab="search" class="inherit-background">
+        <ion-tab-button class="inherit-background" (click)="showCollectionSearch($event)">
           <ion-icon name="search" color="dark"></ion-icon>
         </ion-tab-button>
       </ion-tab-bar>
-      <ion-icon name="notifications" class="notification"></ion-icon>
+      <ion-icon name="notifications" class="notification" (click)="showNotifications($event)"></ion-icon>
     </div>
     <div class="dashboad-body">
       <div class="dash-tile-wrapper">
@@ -39,7 +39,7 @@
             <ion-text></ion-text>
           </div>
         </div>
-        <div class="dash-tile tile-danger" routerLink="/main/tabs/review">
+        <div class="dash-tile tile-danger" routerLink="/main/tabs/feedbacks">
           <ion-icon name="chatbox-ellipses" slot="start"></ion-icon>
           <div class="dash-tile-body">
             <ion-label>Review</ion-label>
@@ -49,7 +49,7 @@
       </div>
       <div class="dash-task-list">
         <div class="dash-list-head">
-          <h4>Waste Collections</h4>
+          <h4>Waste Collection Dates</h4>
           <h6><a routerLink="/main/tabs/waste-collection">View All</a></h6>
         </div>
         <div class="dash list-body">

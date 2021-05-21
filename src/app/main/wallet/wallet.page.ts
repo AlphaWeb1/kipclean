@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { ModalController } from '@ionic/angular';
+import { ModalController, PopoverController } from '@ionic/angular';
+import { NotificationComponent } from 'src/app/components/notification/notification.component';
 import { TopupModalComponent } from 'src/app/components/topup-modal/topup-modal.component';
 
 @Component({
@@ -10,7 +11,8 @@ import { TopupModalComponent } from 'src/app/components/topup-modal/topup-modal.
 export class WalletPage implements OnInit {
 
   constructor(
-    public popupModal: ModalController
+    public popupModal: ModalController,
+    public popoverDrop: PopoverController
   ) { }
 
   ngOnInit() {
@@ -25,6 +27,19 @@ export class WalletPage implements OnInit {
       }
     });
     return await modal.present();
+  }
+
+  async showNotifications($event: any){
+    const popover = await this.popoverDrop.create({
+      component: NotificationComponent,
+      componentProps: {
+        sourceFired: 'client',
+        data: $event
+      }
+    });
+    await popover.present();
+    
+    // const { role } = await popover.onDidDismiss();
   }
 
 }
