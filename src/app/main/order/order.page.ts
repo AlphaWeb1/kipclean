@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { PopoverController } from '@ionic/angular';
+import { NotificationComponent } from 'src/app/components/notification/notification.component';
 
 @Component({
   selector: 'app-order',
@@ -7,9 +9,21 @@ import { Component, OnInit } from '@angular/core';
 })
 export class OrderPage implements OnInit {
 
-  constructor() { }
+  constructor(
+    private popoverDrop: PopoverController
+  ) { }
 
   ngOnInit() {
   }
 
+  async showNotifications($event: any){
+    const popover = await this.popoverDrop.create({
+      component: NotificationComponent,
+      componentProps: {
+        sourceFired: 'client',
+        data: $event
+      }
+    });
+    return await popover.present();
+  }
 }

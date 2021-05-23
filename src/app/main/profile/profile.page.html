@@ -13,23 +13,23 @@
     <div class="profile-body">
       <ion-card>
         <ion-card-header class="flex-header">
-          <ion-card-title>Abdulwasiu Majoyeogbe</ion-card-title>
-          <ion-icon class="card-header-link" name="pencil" (click)="editProfile($event)"></ion-icon>
+          <ion-card-title>{{ authService.user.value.first_name }} {{ authService.user.value.surname }}</ion-card-title>
+          <ion-icon class="card-header-link" name="pencil" (click)="editProfile(authService.user.value)"></ion-icon>
         </ion-card-header>
         <ion-card-content>
           <ion-list>
             <ion-item lines="none">
               <ion-label>
-              abdulwasihitopee4real@gmail.com
+                {{ authService.user.value.email }}
               </ion-label>
             </ion-item>
             <ion-item lines="none">
               <ion-label>
-              +2348188549307
+              {{ authService.user.value.phone }}
               </ion-label>
             </ion-item>
             <ion-item lines="none">
-              <ion-label class="button-main text-bold text-center" (click)="editProfile($event)">
+              <ion-label class="button-main text-bold text-center" (click)="editProfile(authService.user.value)">
                 Edit Detail
               </ion-label>
             </ion-item>

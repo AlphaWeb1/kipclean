@@ -17,7 +17,7 @@ export class MainPage implements OnInit {
   ) { }
 
   ngOnInit() {
-    console.log(this.router.url);
+    // console.log(this.router.url);
   }
 
   orderRecycleBin($event: any){

@@ -1,6 +1,6 @@
 import { Route } from '@angular/compiler/src/core';
 import { Injectable } from '@angular/core';
-import { ActivatedRouteSnapshot, CanActivate, CanLoad, RouterStateSnapshot, UrlSegment, UrlTree } from '@angular/router';
+import { CanLoad, UrlSegment, UrlTree } from '@angular/router';
 
 import { NavController } from '@ionic/angular';
 import { Observable, of } from 'rxjs';
@@ -11,10 +11,12 @@ import { AuthenticationService } from '../services/authentication.service';
 @Injectable({
   providedIn: 'root'
 })
-export class AuthenticationGuard implements /*CanActivate*/ CanLoad {
+export class AuthenticationGuard implements CanLoad {
   constructor(
     private authService: AuthenticationService,
-    private navCtrl: NavController) {}
+    private navCtrl: NavController
+  ) {}
+    
   canLoad(
     route: Route,
     segments: UrlSegment[]): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
@@ -29,10 +31,5 @@ export class AuthenticationGuard implements /*CanActivate*/ CanLoad {
         })
       );
   }
-  // canActivate(
-  //   route: ActivatedRouteSnapshot,
-  //   state: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
-  //   return true;
-  // }
   
 }

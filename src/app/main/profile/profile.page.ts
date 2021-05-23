@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ModalController, PopoverController } from '@ionic/angular';
 import { EditProfileComponent } from 'src/app/components/edit-profile/edit-profile.component';
 import { NotificationComponent } from 'src/app/components/notification/notification.component';
+import { AuthenticationService } from 'src/app/services/authentication.service';
 
 @Component({
   selector: 'app-profile',
@@ -12,7 +13,8 @@ export class ProfilePage implements OnInit {
 
   constructor(
     public popupModal: ModalController,
-    public popoverDrop: PopoverController
+    public popoverDrop: PopoverController,
+    private authService: AuthenticationService
   ) { }
 
   ngOnInit() {
@@ -34,7 +36,7 @@ export class ProfilePage implements OnInit {
       component: NotificationComponent,
       componentProps: {
         sourceFired: 'client',
-        data: $event
+        profile: this.authService.user.value
       }
     });
     return await popover.present();

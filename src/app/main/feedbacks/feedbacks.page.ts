@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { PopoverController } from '@ionic/angular';
+import { NotificationComponent } from 'src/app/components/notification/notification.component';
 
 @Component({
   selector: 'app-feedbacks',
@@ -7,9 +9,26 @@ import { Component, OnInit } from '@angular/core';
 })
 export class FeedbacksPage implements OnInit {
 
-  constructor() { }
+
+  constructor(
+    private popoverDrop: PopoverController
+  ) { }
 
   ngOnInit() {
   }
 
+  sendFeedback($event: any){
+
+  }
+
+  async showNotifications($event: any){
+    const popover = await this.popoverDrop.create({
+      component: NotificationComponent,
+      componentProps: {
+        sourceFired: 'client',
+        data: $event
+      }
+    });
+    return await popover.present();
+  }
 }

@@ -1,6 +1,8 @@
 import { NgModule } from '@angular/core';
 import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
 import { AuthenticationGuard } from './authentication/authentication.guard';
+import { CustomerGuard } from './guards/customer.guard';
+import { StaffGuard } from './guards/staff.guard';
 
 const routes: Routes = [
   {
@@ -33,6 +35,12 @@ const routes: Routes = [
     loadChildren: () => import('./main/main.module').then( m => m.MainPageModule),
     canLoad: [AuthenticationGuard]
   },
+  {
+    path: 'staff',
+    loadChildren: () => import('./staff/staff.module').then( m => m.StaffPageModule),
+    canLoad: [AuthenticationGuard]
+  },
+
 
 ];
 

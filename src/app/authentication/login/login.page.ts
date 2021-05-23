@@ -33,7 +33,7 @@ export class LoginPage implements OnInit {
         if (res.status === 'success') {
           this.email = null;
           this.password = null;
-          this.router.navigateByUrl('/main');
+          this.router.navigateByUrl( res.data.user.role === 'customer' ? '/main' : '/staff' );
           this.util.showToast(res.message);
         } 
         // else {
