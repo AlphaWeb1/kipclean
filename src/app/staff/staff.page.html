@@ -1,0 +1,31 @@
+<ion-content>
+  <ion-tabs class="staff-footer">
+    <ion-tab-bar slot="bottom" class="custom-tabbar">
+      <ion-tab-button tab="home" class="custom-tab inherit-background" [ngClass]="{'active': router.url == '/staff/tabs/home'}" color="dark">
+        <ion-icon name="home" color="dark"></ion-icon>
+        <ion-label color="dark">Home</ion-label>
+        <!-- <ion-badge>6</ion-badge> -->
+      </ion-tab-button>
+  
+      <ion-tab-button tab="orders" class="custom-tab inherit-background" [ngClass]="{'active': router.url == '/staff/tabs/orders'}">
+        <ion-icon name="list" color="dark"></ion-icon>
+        <ion-label>Order</ion-label>
+      </ion-tab-button>
+  
+      <ion-tab-button tab="collections" class="custom-tab inherit-background" [ngClass]="{'active': router.url == '/staff/tabs/collections'}">
+        <ion-icon name="list" color="dark"></ion-icon>
+        <ion-label>Order</ion-label>
+      </ion-tab-button>
+  
+      <ion-tab-button tab="users" class="custom-tab inherit-background" [ngClass]="{'active': router.url == '/staff/tabs/users'}">
+        <ion-icon name="persons" color="dark"></ion-icon>
+        <ion-label>Profile</ion-label>
+      </ion-tab-button>
+  
+      <ion-tab-button class="custom-tab inherit-background" (click)="logout()">
+        <ion-icon name="log-out" color="dark"></ion-icon>
+        <ion-label>Logout</ion-label>
+      </ion-tab-button>
+    </ion-tab-bar>
+  </ion-tabs>
+</ion-content>
