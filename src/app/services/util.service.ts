@@ -12,6 +12,15 @@ const { Toast } = Plugins;
 export class UtilService {
 
   constructor(private alertControl: AlertController) { }
+
+  generateQueryParams(queryParamObj) {
+    let queryParams = "";
+    if (queryParamObj) {
+      const queryParamKeys = Object.keys(queryParamObj);
+      queryParamKeys.forEach(qPK => queryParams = `${queryParams == "" ? queryParams: "&" }${ queryParamObj[qPK] ? `${qPK}=${queryParamObj[qPK]}`: `${queryParamObj[qPK]}`}`);
+    }
+    return queryParams;
+  }
   
   async showToast(text: string, duration?, position?) {
     await Toast.show({

@@ -6,7 +6,7 @@ export const environment = {
   production: false,
   apiUrl: 'http://kipclean.giftpadi.com/api/v1/',
   paystackPK: {
-    key : 'ij9ik0'
+    key : 'pk_test_f75c5c4b9f22526deff821a26916e7239a66a7a7'
   }
 };
 

@@ -239,6 +239,13 @@ ion-modal#ion-overlay-2, ion-modal .modal-wrapper, ion-modal ion-backdrop, ion-m
 }
 
 /** Error Css Handler **/
+.notice-message {
+    text-align: center;
+    width: 100%;
+    padding: 0.5rem;
+    color: #750000;
+}
+
 .err-text {
     color: #ff3333;
     font-size: 14px;

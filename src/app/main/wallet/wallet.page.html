@@ -1,5 +1,5 @@
 <ion-content [fullscreen]="true">
-  <div class="dashboard-main">
+  <div class="dashboard-main" *ngIf="!isLoading">
     <div class="dashboard-header">
       <ion-label class="back-button" routerLink="/main/tabs/dashboard">
         <ion-icon name="return-up-back-outline"></ion-icon>
@@ -8,10 +8,10 @@
       <ion-icon name="notifications" class="notification" (click)="showNotifications($event)"></ion-icon>
     </div>
     <div class="dashboad-body">
-      <div class="wallet-tile-wrapper">
+      <div class="wallet-tile-wrapper" *ngIf="wallet">
         <h5 class="wallet-tile-title">Balance</h5>
-        <h3 class="wallet-tile-amount">$1000.00</h3>
-        <ion-button class="topup-button" color="dark" (click)="topUpWallet($event)">
+        <h3 class="wallet-tile-amount">₦{{wallet.amount}}</h3>
+        <ion-button class="topup-button" color="dark" (click)="topUpWallet()">
           <ion-icon name="arrow-up-circle"></ion-icon>
           Top Up
         </ion-button>
@@ -21,28 +21,13 @@
           <h4>Transactions</h4>
         </div>
         <div class="dash list-body">
-          <ion-list>
-            <ion-item>
-              <ion-label>Transaction Description <span class="float-end">$2000</span></ion-label>
-              <ion-icon slot="end" name="ellipsis-horizontal"></ion-icon>
-            </ion-item>
-            <ion-item>
-              <ion-label>Transaction Description <span class="float-end">$2000</span></ion-label>
-              <ion-icon slot="end" name="ellipsis-horizontal"></ion-icon>
-            </ion-item>
-            <ion-item>
-              <ion-label>Transaction Description <span class="float-end">$2000</span></ion-label>
-              <ion-icon slot="end" name="ellipsis-horizontal"></ion-icon>
-            </ion-item>
-            <ion-item>
-              <ion-label>Transaction Description <span class="float-end">$2000</span></ion-label>
-              <ion-icon slot="end" name="ellipsis-horizontal"></ion-icon>
-            </ion-item>
-            <ion-item>
-              <ion-label>Transaction Description <span class="float-end">$2000</span></ion-label>
+          <ion-list *ngIf="transactions?.length">
+            <ion-item *ngFor="let trans of transactions; let idx=index">
+              <ion-label>{{trans.type}} ({{trans.reference}})<span class="float-end">₦{{trans.amount}}</span></ion-label>
               <ion-icon slot="end" name="ellipsis-horizontal"></ion-icon>
             </ion-item>
           </ion-list>
+          <div class="notice-message" *ngIf="!transactions?.length"> No record found.</div>
         </div>
       </div>
     </div>

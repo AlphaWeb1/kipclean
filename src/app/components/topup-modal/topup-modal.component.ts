@@ -1,7 +1,12 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { ModalController } from '@ionic/angular';
+import { Wallet } from 'src/app/interfaces/wallet';
+import { Transaction } from 'src/app/interfaces/transaction';
+
+import * as dayjs from 'dayjs';
 
 import { AuthenticationService } from 'src/app/services/authentication.service';
+import { BackendService } from 'src/app/services/backend.service';
 import { PaystackService } from 'src/app/services/paystack.service';
 import { UtilService } from 'src/app/services/util.service';
 
@@ -13,32 +18,49 @@ import { UtilService } from 'src/app/services/util.service';
 export class TopupModalComponent implements OnInit {
   
   inProcess: boolean;
+  isLoading: boolean;
   amount: number;
   walletBalance: number;
+  reference: string;
+  @Input() wallet: Wallet;
+  id: any;
 
   constructor (
     private popupModal: ModalController,
     private authService: AuthenticationService,
     private utilService: UtilService,
-    private paystackService: PaystackService
+    private paystackService: PaystackService,
+    private backendService: BackendService
   ) {}
 
   ngOnInit(){
-    // getWalletBalance
+    // this.backendService.getTest().subscribe(
+    //   res => {
+    //     console.log(res);
+    //   }, err => console.log(err)
+    // )
   }
   
   onTopup() {
-    
+    this.reference = 'TRAN1' + Math.random().toString(36).substr(2, 9) + '';
+    this.onProcessPaystackPayment("01", this.amount, this.reference, this.authService.accessToken.value);
   }
 
-  private onProcessPaystackPayment(id: string, amount: number, reference: string) {
+  private onProcessPaystackPayment(id: string, amount: number, reference: string, accessToken: string) {
     const email = this.authService.user.value.email;
     this.inProcess = true;
     this.paystackService.processPayment(amount, reference, email)
       .then((res: any) => {
         if (res.status === 'closed') {
-          // this.fbService.updateWalletTransactions(id, { status: 'aborted', dateUpdated: dayjs().format() }).subscribe();
-          // update transaction table endpoint on cancellation
+          const transaction: Transaction = {
+              email: this.authService.user.value.email,
+              amount: amount,
+              reference,
+              status: 'FAILED',
+              type: 'WALLET',
+            },
+            queryParam = { auth_access_token: this.authService.accessToken.value.toString };
+          this.backendService.saveTransaction(transaction, queryParam).subscribe();
           this.inProcess = false;
           this.utilService.showToast('Wallet top-up cancelled.');
         } else if (res.status === 'success') {
@@ -46,19 +68,14 @@ export class TopupModalComponent implements OnInit {
           //   status: 'success',
           //   dateUpdated: dayjs().format()
           // };
-          const newBalance = this.walletBalance + amount;
-          this.walletBalance = newBalance;
+          const newBalance = this.wallet.amount + amount;
+          this.wallet.amount = newBalance;
 
-          // this.fbService.updateWalletTransactions(id, transPayload).subscribe();
-          
-          // update transaction table endpoint on success
-          // update user wallet endpoint
-          // this.fbService.updateDigitalWallet(this.walletId, { balance: newBalance }).subscribe();
-          // this.walletTransactions[0].status = transPayload.status;
-          // this.walletTransactions[0].status = transPayload.dateUpdated;
+          this.backendService.updateWallet({amount}, {accessToken}).subscribe();
           this.amount = 0;
           this.inProcess = false;
           this.utilService.showToast('Wallet top-up successful.');
+          this.closeModal();
         } else {
           this.inProcess = false;
           this.utilService.showToast('Wallet top-up failed. Please contact the company.');
@@ -72,7 +89,8 @@ export class TopupModalComponent implements OnInit {
   
   closeModal(){
     this.popupModal.dismiss({
-      'dismissed': true
+      'dismissed': true,
+      wallet: this.wallet
     });
   }
 

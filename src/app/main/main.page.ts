@@ -13,11 +13,11 @@ export class MainPage implements OnInit {
 
   constructor(
     private authService: AuthenticationService,
-    private router: Router
+    private router: Router,
   ) { }
 
   ngOnInit() {
-    // console.log(this.router.url);
+
   }
 
   orderRecycleBin($event: any){
