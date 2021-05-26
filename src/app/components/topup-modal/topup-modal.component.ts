@@ -20,7 +20,6 @@ export class TopupModalComponent implements OnInit {
   inProcess: boolean;
   isLoading: boolean;
   amount: number;
-  walletBalance: number;
   reference: string;
   @Input() wallet: Wallet;
   id: any;
@@ -34,11 +33,6 @@ export class TopupModalComponent implements OnInit {
   ) {}
 
   ngOnInit(){
-    // this.backendService.getTest().subscribe(
-    //   res => {
-    //     console.log(res);
-    //   }, err => console.log(err)
-    // )
   }
   
   onTopup() {
@@ -63,11 +57,9 @@ export class TopupModalComponent implements OnInit {
           this.backendService.saveTransaction(transaction, queryParam).subscribe();
           this.inProcess = false;
           this.utilService.showToast('Wallet top-up cancelled.');
+
         } else if (res.status === 'success') {
-          // const transPayload = {
-          //   status: 'success',
-          //   dateUpdated: dayjs().format()
-          // };
+
           const newBalance = this.wallet.amount + amount;
           this.wallet.amount = newBalance;
 

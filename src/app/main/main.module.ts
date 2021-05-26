@@ -11,11 +11,14 @@ import { NotificationModule } from '../components/notification/notification.modu
 import { TopupModalModule } from '../components/topup-modal/topup-modal.module';
 import { TopupModalComponent } from '../components/topup-modal/topup-modal.component';
 import { NotificationComponent } from '../components/notification/notification.component';
+import { OrderRecyclebinModalModule } from '../components/order-recyclebin-modal/order-recyclebin-modal.module';
+import { OrderRecyclebinModalComponent } from '../components/order-recyclebin-modal/order-recyclebin-modal.component';
 
 @NgModule({
   entryComponents: [
     TopupModalComponent,
-    NotificationComponent
+    NotificationComponent,
+    OrderRecyclebinModalComponent
   ],
   imports: [
     CommonModule,
@@ -23,6 +26,7 @@ import { NotificationComponent } from '../components/notification/notification.c
     IonicModule,
     NotificationModule,
     TopupModalModule,
+    OrderRecyclebinModalModule,
     MainPageRoutingModule
   ],
   declarations: [MainPage]

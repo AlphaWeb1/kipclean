@@ -1,10 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import { ModalController, PopoverController } from '@ionic/angular';
+import * as dayjs from 'dayjs';
 import { NotificationComponent } from 'src/app/components/notification/notification.component';
 
 import { TopupModalComponent } from 'src/app/components/topup-modal/topup-modal.component';
 import { Wallet } from 'src/app/interfaces/wallet';
 import { BackendService } from 'src/app/services/backend.service';
+import { ModelService } from 'src/app/services/model.service';
 import { UtilService } from 'src/app/services/util.service';
 import { AuthenticationService } from '../../services/authentication.service';
 
@@ -17,19 +19,22 @@ export class DashboardPage implements OnInit {
 
   isLoading: boolean;
   wallet: Wallet;
-  transactions = [];
+  collectionDates = [];
+  datejs = dayjs();
   
   constructor(
     private authService: AuthenticationService,
     public popupModal: ModalController,
     private backendService: BackendService,
     private utilService: UtilService,
+    private modelService: ModelService,
     public popoverDrop: PopoverController
   ) { }
 
   ngOnInit() {
     this.getWalletBalance(this.authService.accessToken.value);
     // this.getTransactions(this.authService.accessToken.value);
+    this. getCollectionDates();
   }
 
   async topUpWallet(){
@@ -45,6 +50,7 @@ export class DashboardPage implements OnInit {
       data => {
         this.getWalletBalance(this.authService.accessToken.value);
         // this.getTransactions(this.authService.accessToken.value);
+        this. getCollectionDates();
       }
     );
     return await modal.present();
@@ -80,17 +86,7 @@ export class DashboardPage implements OnInit {
     );
   }
 
-  private getTransactions(accessToken: string){
-    this.transactions = [];
-    this.backendService.getTransactions({accessToken}).subscribe(
-      res => {
-        if (res?.data) {
-          this.transactions = res.data;
-        }
-      },
-      err => {
-        this.utilService.showAlert(`Server Error`, 'Unable to connect to server. Please try again.');
-      }
-    );
+  private getCollectionDates(){
+    this.collectionDates = this.modelService.getCollectionDates();
   }
 }

@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ModelService } from 'src/app/services/model.service';
 
 @Component({
   selector: 'app-waste-collection',
@@ -7,9 +8,18 @@ import { Component, OnInit } from '@angular/core';
 })
 export class WasteCollectionPage implements OnInit {
 
-  constructor() { }
+  collectionDates = [];
+
+  constructor(
+    private modelService: ModelService
+  ) { }
 
   ngOnInit() {
+    this. getCollectionDates();
   }
 
+
+  private getCollectionDates(){
+    this.collectionDates = this.modelService.getCollectionDates();
+  }
 }

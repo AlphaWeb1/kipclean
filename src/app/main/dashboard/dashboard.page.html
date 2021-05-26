@@ -6,7 +6,7 @@
           <ion-icon name="calendar" color="dark"></ion-icon>
           <!-- <ion-badge>6</ion-badge> -->
         </ion-tab-button>
-        <ion-tab-button class="inherit-background" routerLink="dashboard/order/1">
+        <ion-tab-button class="inherit-background" routerLink="/main/tabs/waste-collection">
           <ion-text class="dash-head-titled-text">next collection</ion-text>
           <ion-label class="text-bold keep-inline">Tuesday, 24, Nov</ion-label>
         </ion-tab-button>
@@ -53,28 +53,13 @@
           <h6><a routerLink="/main/tabs/waste-collection">View All</a></h6>
         </div>
         <div class="dash list-body">
-          <ion-list>
-            <ion-item>
-              <ion-label>Lekki Phase 1 <small>(Monday, 12, June)</small></ion-label>
-              <ion-icon slot="end" name="ellipsis-horizontal"></ion-icon>
-            </ion-item>
-            <ion-item>
-              <ion-label>Lekki Phase 11 <small>(Tuesday, 13, June)</small></ion-label>
-              <ion-icon slot="end" name="ellipsis-horizontal"></ion-icon>
-            </ion-item>
-            <ion-item>
-              <ion-label>Ubeju Lekki <small>(Wednesday, 14, June)</small></ion-label>
-              <ion-icon slot="end" name="ellipsis-horizontal"></ion-icon>
-            </ion-item>
-            <ion-item>
-              <ion-label>Epe <small>(Saturday, 10, June)</small></ion-label>
-              <ion-icon slot="end" name="ellipsis-horizontal"></ion-icon>
-            </ion-item>
-            <ion-item>
-              <ion-label>Victoria Island <small>(Wednesdy, 07, June)</small></ion-label>
+          <ion-list *ngIf="collectionDates?.length">
+            <ion-item *ngFor="let collection of collectionDates; let idx = index">
+              <ion-label>{{collection.location}} <small>({{collection.date}})</small></ion-label>
               <ion-icon slot="end" name="ellipsis-horizontal"></ion-icon>
             </ion-item>
           </ion-list>
+          <div class="notice-message" *ngIf="!collectionDates?.length"> No record found.</div>
         </div>
       </div>
     </div>

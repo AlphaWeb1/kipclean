@@ -38,7 +38,7 @@ export class BackendService {
     return this.http.get<ApiDataResponse>(`${environment.apiUrl}/transactions${queryParam ? `?${queryParam}`: ''}`);
   }
 
-  getWallet(queryParamsObject, token?: string) {
+  getWallet(queryParamsObject?: any, token?: string) {
     const queryParam = this.util.generateQueryParams(queryParamsObject);
     return this.http.get<ApiDataResponse>(`${environment.apiUrl}/wallets${queryParam ? `?${queryParam}`: ''}`); // use user email
   }

@@ -6,6 +6,7 @@ export interface Transaction {
     status: string; // pending successful, failed
     gateway?: string; // paystack
     type: string; // funding, waste bin, waste disposal
+    unit?: number;
     createdAt?: string;
     updatedAt?: string;
 }

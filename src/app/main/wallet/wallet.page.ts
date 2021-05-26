@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { ModalController, PopoverController } from '@ionic/angular';
 import { NotificationComponent } from 'src/app/components/notification/notification.component';
 import { TopupModalComponent } from 'src/app/components/topup-modal/topup-modal.component';
-import { Transaction } from 'src/app/interfaces/transaction';
 import { Wallet } from 'src/app/interfaces/wallet';
 import { AuthenticationService } from 'src/app/services/authentication.service';
 import { BackendService } from 'src/app/services/backend.service';
@@ -83,7 +82,7 @@ export class WalletPage implements OnInit {
     this.backendService.getTransactions({accessToken}).subscribe(
       res => {
         if (res?.data) {
-          this.transactions = res.data;
+          this.transactions = res.data.filter(transaction => transaction.type === 'WALLET');
         }
       },
       err => {

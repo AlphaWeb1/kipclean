@@ -1,3 +1,36 @@
-<p>
-  order-recyclebin-modal works!
-</p>
+
+<ion-content>
+  <div class="modal-main">
+    <div class="modal-body">
+      <div class="modal-title">
+        <ion-card-title>Order Recyclebin</ion-card-title>
+        <ion-button color="light" (click)="closeModal()">
+          <ion-icon name="close" slot="icon-only"></ion-icon>
+        </ion-button>
+      </div>
+      <form class="modal-form">
+        <div class="form-controls-wrapper">
+          <h3 class="text-center">₦{{modelService.binFee}} per unit</h3>
+        </div>
+        <div class="form-controls-wrapper">
+          <div class="input-wrapper">
+            <div class="input-inner">
+              <ion-item class="reg-form-input-item">
+                <ion-icon class="input-icon float-label" name="add"></ion-icon>
+                <ion-input class="input reg-form-input" name="unit" type="number" placeholder="Quantity" [(ngModel)]="unit" required></ion-input>
+              </ion-item>
+            </div>
+          </div>
+          <div class="input-wrapper">
+            <div class="input-inner">
+              <button class="reg-form-button" [disabled]="!unit || inProcess" (click)="orderRecycleBin()">
+                <span *ngIf="!inProcess">Place Order</span>
+                <ion-spinner name="lines-small" *ngIf="inProcess"></ion-spinner>
+              </button>
+            </div>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+</ion-content>

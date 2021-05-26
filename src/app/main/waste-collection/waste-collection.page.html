@@ -9,28 +9,13 @@
       </ion-card-title>
     </div>
     <div class="waste-body">
-      <ion-list>
-        <ion-item>
-          <ion-label>Lekki Phase 1 <small>(Monday, 12, June)</small></ion-label>
-          <ion-icon slot="end" name="ellipsis-horizontal"></ion-icon>
-        </ion-item>
-        <ion-item>
-          <ion-label>Lekki Phase 11 <small>(Tuesday, 13, June)</small></ion-label>
-          <ion-icon slot="end" name="ellipsis-horizontal"></ion-icon>
-        </ion-item>
-        <ion-item>
-          <ion-label>Ubeju Lekki <small>(Wednesday, 14, June)</small></ion-label>
-          <ion-icon slot="end" name="ellipsis-horizontal"></ion-icon>
-        </ion-item>
-        <ion-item>
-          <ion-label>Epe <small>(Saturday, 10, June)</small></ion-label>
-          <ion-icon slot="end" name="ellipsis-horizontal"></ion-icon>
-        </ion-item>
-        <ion-item>
-          <ion-label>Victoria Island <small>(Wednesdy, 07, June)</small></ion-label>
+      <ion-list *ngIf="collectionDates?.length">
+        <ion-item *ngFor="let collection of collectionDates; let idx = index">
+          <ion-label>{{collection.location}} <small>({{collection.date}})</small></ion-label>
           <ion-icon slot="end" name="ellipsis-horizontal"></ion-icon>
         </ion-item>
       </ion-list>
+      <div class="notice-message" *ngIf="!collectionDates.length"> No record found.</div>
     </div>
   </div>
 </ion-content>
