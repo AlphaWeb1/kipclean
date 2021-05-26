@@ -23,7 +23,7 @@
         <div class="dash list-body">
           <ion-list *ngIf="transactions?.length">
             <ion-item *ngFor="let trans of transactions; let idx=index">
-              <ion-label>{{trans.type}} ({{trans.reference}})<span class="float-end">₦{{trans.amount}}</span></ion-label>
+              <ion-label><span class="float-end">₦{{trans.amount}}</span> {{trans.type}} ({{trans.reference}})</ion-label>
               <ion-icon slot="end" name="ellipsis-horizontal"></ion-icon>
             </ion-item>
           </ion-list>
