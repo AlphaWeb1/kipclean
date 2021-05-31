@@ -62,7 +62,18 @@
           </div>
           <div class="input-wrapper">
             <div class="input-inner">
-              <button class="reg-form-button"  [disabled]="!updateForm.valid || inProcess" (click)="onUpdateProfile()">
+              <ion-item class="reg-form-input-item">
+                <ion-icon class="input-icon float-label" name="location"></ion-icon>
+                <ion-textarea class="input reg-form-input" placeholder="Address" formControlName="address" required></ion-textarea>
+              </ion-item>
+            </div>
+            <span class="err-text" *ngIf="(updateFormControl.address.touched) && updateFormControl.address.errors?.required">
+              Address is required
+            </span>
+          </div>
+          <div class="input-wrapper">
+            <div class="input-inner">
+              <button class="reg-form-button"  [disabled]="!updateFormControl.valid || inProcess" (click)="onUpdateProfile()">
                 <span *ngIf="!inProcess">Save Changes</span>
                 <ion-spinner name="lines-small" *ngIf="inProcess"></ion-spinner>
               </button>

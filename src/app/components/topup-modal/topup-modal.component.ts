@@ -59,21 +59,31 @@ export class TopupModalComponent implements OnInit {
           this.utilService.showToast('Wallet top-up cancelled.');
 
         } else if (res.status === 'success') {
-
           const newBalance = this.wallet.amount + amount;
           this.wallet.amount = newBalance;
 
-          this.backendService.updateWallet({amount}, {accessToken}).subscribe();
-          this.amount = 0;
-          this.inProcess = false;
-          this.utilService.showToast('Wallet top-up successful.');
-          this.closeModal();
+          this.backendService.updateWallet({amount}, {accessToken}).subscribe(
+            res => {
+              this.amount = 0;
+              this.inProcess = false;
+              this.utilService.showToast('Wallet funded successfull.');
+              this.backendService.createNotification({text: `₦${newBalance} was credited to your wallet.`, url: '/main/tabs/wallet', status: "unread"}).subscribe(
+                res => this.closeModal(),
+                err => {
+                  this.utilService.showAlert('Server Error', 'Unable to create notification.');
+                  this.closeModal()
+                }
+              );
+            },
+            err => {
+              this.utilService.showToast('Error making Payment. Please try again.');
+            }
+          );
         } else {
           this.inProcess = false;
           this.utilService.showToast('Wallet top-up failed. Please contact the company.');
         }
-      })
-      .catch((error) => {
+      }).catch((error) => {
         this.utilService.showToast('Error making Payment. Please try again.');
       })
       .finally(() => {});

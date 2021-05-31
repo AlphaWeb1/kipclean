@@ -7,12 +7,13 @@ import { UtilService } from './util.service';
 
 import { environment } from 'src/environments/environment';
 import { ApiDataResponse } from '../interfaces/api-data-response';
+import { User } from '../interfaces/user';
 
 @Injectable({
   providedIn: 'root'
 })
 export class BackendService {
-
+  
   constructor(
     private http: HttpClient,
     private router: Router,
@@ -108,6 +109,32 @@ export class BackendService {
     const queryParam = this.util.generateQueryParams(queryParamsObject);
     return this.http.post<ApiDataResponse>(
       `${environment.apiUrl}/create-wallet${queryParam ? `?${queryParam}`: ''}`,
+        payload
+    );
+  }
+  
+
+  createNotification(payload, token?: string, queryParamsObject?: any) {
+    const authToken = token ? token : this.auth.accessToken.value;
+    const queryParam = this.util.generateQueryParams(queryParamsObject);
+    return this.http.post<ApiDataResponse>(
+      `${environment.apiUrl}notifications${queryParam ? `?${queryParam}`: ''}`,
+        payload
+    );
+  }
+  
+  updateNotification(payload, id: string, token?: string, queryParamsObject?: any) {
+    const authToken = token ? token : this.auth.accessToken.value;
+    const queryParam = this.util.generateQueryParams(queryParamsObject);
+    return this.http.patch<ApiDataResponse>(
+      `${environment.apiUrl}notifications/${id}${queryParam ? `?${queryParam}`: ''}`,
+        payload
+    );
+  }
+
+  updateProfile(payload: User, token?: string, queryParamsObject?: any){
+    return this.http.patch<ApiDataResponse>(
+      `${environment.apiUrl}user/profile`,
         payload
     );
   }

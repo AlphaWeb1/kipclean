@@ -12,6 +12,9 @@
     </div>
     <div class="profile-body">
       <ion-card>
+        <div class="d-flex flex-center">
+          <ion-icon class="user-icon" name="person"></ion-icon>
+        </div>
         <ion-card-header class="flex-header">
           <ion-card-title>{{ authService.user.value.first_name }} {{ authService.user.value.surname }}</ion-card-title>
           <ion-icon class="card-header-link" name="pencil" (click)="editProfile(authService.user.value)"></ion-icon>
@@ -26,6 +29,11 @@
             <ion-item lines="none">
               <ion-label>
               {{ authService.user.value.phone }}
+              </ion-label>
+            </ion-item>
+            <ion-item lines="none">
+              <ion-label>
+              {{ authService.user.value.address }}
               </ion-label>
             </ion-item>
             <ion-item lines="none">
