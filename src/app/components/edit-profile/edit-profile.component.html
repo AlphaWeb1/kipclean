@@ -50,15 +50,6 @@
                 <ion-input class="input reg-form-input" type="email" placeholder="Email" formControlName="email" required readonly></ion-input>
               </ion-item>
             </div>
-            <span class="err-text" *ngIf="(updateFormControl.email.touched) && updateFormControl.email.errors?.required">
-              Email is required
-            </span>
-            <span class="err-text" *ngIf="updateFormControl.email.touched && updateFormControl.email.errors?.email">
-              Enter a valid email address
-            </span>
-            <span class="err-text" *ngIf="updateFormControl.email.touched && updateFormControl.email.errors?.invalidEmail">
-              Enter a valid email (Gmail, Yahoo, Hotmail and Outlook.)
-            </span>
           </div>
           <div class="input-wrapper">
             <div class="input-inner">
@@ -73,7 +64,7 @@
           </div>
           <div class="input-wrapper">
             <div class="input-inner">
-              <button class="reg-form-button"  [disabled]="!updateFormControl.valid || inProcess" (click)="onUpdateProfile()">
+              <button class="reg-form-button"  [disabled]="!updateForm.valid || inProcess" (click)="onUpdateProfile()">
                 <span *ngIf="!inProcess">Save Changes</span>
                 <ion-spinner name="lines-small" *ngIf="inProcess"></ion-spinner>
               </button>

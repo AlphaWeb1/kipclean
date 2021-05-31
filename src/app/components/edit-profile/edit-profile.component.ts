@@ -52,8 +52,13 @@ export class EditProfileComponent implements OnInit {
         this.inProcess = false;
         this.authService.storeUser(res.data);
         this.authService.user.next(res.data);
-        // this.authService.initializeAuth(res);
-        this.closeModal();
+        this.backendService.createNotification({text: `Profile updated successfully.`, url: '/main/tabs/profile', status: "unread"}).subscribe(
+          res => this.closeModal(),
+          err => {
+            this.util.showAlert('Server Error', 'Unable to create notification.');
+            this.closeModal()
+          }
+        );
       }, err => {
         this.util.showAlert(`Server Error`, err.error.message);
         this.inProcess = false;
@@ -65,7 +70,7 @@ export class EditProfileComponent implements OnInit {
     this.updateForm = this.fb.group({
       firstName: [this.authService.user.value.first_name, Validators.required],
       lastName: [this.authService.user.value.surname, Validators.required],
-      email: [this.authService.user.value.email, Validators.compose([Validators.required, Validators.email, this.customValidator.emailValidator()])],
+      email: [this.authService.user.value.email],
       phone: [this.authService.user.value.phone, Validators.required],
       address: [this.authService.user.value.address ?? '', Validators.required],
       // password: ['', Validators.compose([Validators.required, this.customValidator.passwordValidator()])],

@@ -58,7 +58,13 @@ export class OrderRecyclebinModalComponent implements OnInit {
           this.backendService.saveTransaction(transaction, queryParam).subscribe();
           this.inProcess = false;
           this.utilService.showToast('Recycle bin successfully ordered.');
-          this.closeModal();
+          this.backendService.createNotification({text: `Recycle bin successfully ordered.`, url: '/main/tabs/order', status: "unread"}).subscribe(
+            res => this.closeModal(),
+            err => {
+              this.utilService.showAlert('Server Error', 'Unable to create notification.');
+              this.closeModal()
+            }
+          );
         },
         err =>{
           this.inProcess = false;

@@ -72,7 +72,7 @@ export class NotificationComponent implements OnInit {
   
   navigateToUrl(notif: any){
     this.canNavigate = false;
-    if (notif.statys === 'unread'){
+    if (notif.status === 'unread'){
       this.markRead(notif.id);
     } else {
       this.canNavigate = true;
