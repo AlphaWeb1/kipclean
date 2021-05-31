@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
-import { BehaviorSubject } from 'rxjs';
-import { WasteCollectionDate } from '../interfaces/waste-collection-date';
+
+import { Wallet } from 'src/app/interfaces/wallet';
 
 @Injectable({
   providedIn: 'root'
@@ -8,6 +8,8 @@ import { WasteCollectionDate } from '../interfaces/waste-collection-date';
 export class ModelService {
   collectionDates = [];
   binFee: number = 3000;
+  notifications = [];
+  wallet: Wallet ;
 
   constructor() { 
     this.initCollectionDate();

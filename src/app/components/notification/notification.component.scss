@@ -22,3 +22,8 @@
     position: fixed;
     z-index: 10;
 }
+
+ion-list ion-item.unread, ion-item.unread .item-native {
+    background: #d8d8d8 !important;
+    --background: #d8d8d8 !important;
+}

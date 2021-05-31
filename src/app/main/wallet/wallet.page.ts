@@ -41,8 +41,7 @@ export class WalletPage implements OnInit {
     
     modal.onDidDismiss().then(
       data => {
-        this.wallet = data.data.wallet;
-        // this.getWalletBalance(this.authService.accessToken.value);
+        this.getWalletBalance(this.authService.accessToken.value);
         this.getTransactions(this.authService.accessToken.value);
       }
     ); 

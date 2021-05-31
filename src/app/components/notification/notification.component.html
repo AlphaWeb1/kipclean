@@ -1,26 +1,11 @@
 <div class="notification-main">
-  <div class="notification-body">
-    <ion-list>
-      <ion-item>
-        <ion-label>Lekki Phase 1 <small>(Monday, 12, June)</small></ion-label>
-        <ion-icon slot="end" name="ellipsis-horizontal"></ion-icon>
-      </ion-item>
-      <ion-item>
-        <ion-label>Lekki Phase 11 <small>(Tuesday, 13, June)</small></ion-label>
-        <ion-icon slot="end" name="ellipsis-horizontal"></ion-icon>
-      </ion-item>
-      <ion-item>
-        <ion-label>Ubeju Lekki <small>(Wednesday, 14, June)</small></ion-label>
-        <ion-icon slot="end" name="ellipsis-horizontal"></ion-icon>
-      </ion-item>
-      <ion-item>
-        <ion-label>Epe <small>(Saturday, 10, June)</small></ion-label>
-        <ion-icon slot="end" name="ellipsis-horizontal"></ion-icon>
-      </ion-item>
-      <ion-item>
-        <ion-label>Victoria Island <small>(Wednesdy, 07, June)</small></ion-label>
-        <ion-icon slot="end" name="ellipsis-horizontal"></ion-icon>
+  <div class="notification-body" *ngIf="!isLoading">
+    <ion-list *ngIf="modelService.notifications?.length">
+      <ion-item class="{{notif.status}}" *ngFor="let notif of modelService.notifications; let idx = index">
+        <ion-label (click)="navigateToUrl(notif)"><small>({{notif.date_string}})</small> {{notif.text}}</ion-label>
+        <ion-icon slot="end" (click)="markRead(notif.id)" name="ellipsis-horizontal"></ion-icon>
       </ion-item>
     </ion-list>
+    <div class="notice-message" *ngIf="!modelService.notifications?.length">Empty notification.</div>
   </div>
 </div>
