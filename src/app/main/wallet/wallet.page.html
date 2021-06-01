@@ -8,9 +8,9 @@
       <ion-icon name="notifications" class="notification" (click)="showNotifications($event)"></ion-icon>
     </div>
     <div class="dashboad-body">
-      <div class="wallet-tile-wrapper" *ngIf="wallet">
+      <div class="wallet-tile-wrapper" *ngIf="modelService.wallet">
         <h5 class="wallet-tile-title">Balance</h5>
-        <h3 class="wallet-tile-amount">₦{{wallet.amount}}</h3>
+        <h3 class="wallet-tile-amount">₦{{modelService.wallet.amount}}</h3>
         <ion-button class="topup-button" color="dark" (click)="topUpWallet()">
           <ion-icon name="arrow-up-circle"></ion-icon>
           Top Up

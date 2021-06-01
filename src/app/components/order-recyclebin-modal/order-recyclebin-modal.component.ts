@@ -20,7 +20,6 @@ export class OrderRecyclebinModalComponent implements OnInit {
   isLoading: boolean;
   unit: number;
   reference: string;
-  @Input() wallet: Wallet;
   id: any;
 
   constructor(
@@ -38,13 +37,13 @@ export class OrderRecyclebinModalComponent implements OnInit {
   orderRecycleBin(){
     const amount = this.modelService.binFee * this.unit;
     this.inProcess = true;
-    if (this.wallet.amount < amount) {
+    if (this.modelService.wallet.amount < amount) {
       this.utilService.showAlert(`Insufficient Fund`, 'Your wallet ballance is not sufficient to order recycle bin.');
       return false;
     } else {
       this.backendService.updateWallet({amount: (amount * -1)}).subscribe(
         res => {
-          this.wallet.amount -= amount;
+          this.modelService.wallet.amount -= amount;
           this.reference = 'TRAN1' + Math.random().toString(36).substr(2, 9) + '';
           const transaction: Transaction = {
             email: this.authService.user.value.email,
@@ -76,7 +75,7 @@ export class OrderRecyclebinModalComponent implements OnInit {
   closeModal(){
     this.popupModal.dismiss({
       'dismissed': true,
-      wallet: this.wallet
+      wallet: this.modelService.wallet
     });
   }
 
