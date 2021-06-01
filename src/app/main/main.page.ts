@@ -3,10 +3,10 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { ModalController } from '@ionic/angular';
 import { OrderRecyclebinModalComponent } from '../components/order-recyclebin-modal/order-recyclebin-modal.component';
-import { Wallet } from '../interfaces/wallet';
 
 import { AuthenticationService } from '../services/authentication.service';
 import { BackendService } from '../services/backend.service';
+import { ModelService } from '../services/model.service';
 import { UtilService } from '../services/util.service';
 
 @Component({
@@ -16,7 +16,6 @@ import { UtilService } from '../services/util.service';
 })
 export class MainPage implements OnInit {
 
-  wallet: Wallet;
   orders = [];
 
   constructor(
@@ -25,6 +24,7 @@ export class MainPage implements OnInit {
     private backendService: BackendService,
     private router: Router,
     private utilService: UtilService,
+    private modelService: ModelService
   ) { }
 
   ngOnInit() {
@@ -36,7 +36,7 @@ export class MainPage implements OnInit {
       component: OrderRecyclebinModalComponent,
       componentProps: {
         sourceFired: 'client',
-        wallet: this.wallet
+        wallet: this.modelService.wallet
       }
     });
     
@@ -53,7 +53,7 @@ export class MainPage implements OnInit {
     this.backendService.getWallet({accessToken}).subscribe(
       res => {
         if (res?.data) {
-          this.wallet = {amount: res.data.balance, email: this.authService.user.value.email};
+          this.modelService.wallet = {amount: res.data.balance, email: this.authService.user.value.email};
         }
       },
       err => {

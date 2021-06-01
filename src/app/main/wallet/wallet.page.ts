@@ -2,9 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { ModalController, PopoverController } from '@ionic/angular';
 import { NotificationComponent } from 'src/app/components/notification/notification.component';
 import { TopupModalComponent } from 'src/app/components/topup-modal/topup-modal.component';
-import { Wallet } from 'src/app/interfaces/wallet';
 import { AuthenticationService } from 'src/app/services/authentication.service';
 import { BackendService } from 'src/app/services/backend.service';
+import { ModelService } from 'src/app/services/model.service';
 import { UtilService } from 'src/app/services/util.service';
 
 @Component({
@@ -15,13 +15,13 @@ import { UtilService } from 'src/app/services/util.service';
 export class WalletPage implements OnInit {
   inProcess: boolean;
   isLoading: boolean = true;
-  wallet: Wallet;
   transactions = [];
   constructor(
     public popupModal: ModalController,
     public popoverDrop: PopoverController,
     private authService: AuthenticationService,
     private utilService: UtilService,
+    private modelService: ModelService,
     private backendService: BackendService
   ) { }
 
@@ -35,7 +35,7 @@ export class WalletPage implements OnInit {
       component: TopupModalComponent,
       componentProps: {
         sourceFired: 'client',
-        wallet: this.wallet
+        wallet: this.modelService.wallet
       }
     });
     
@@ -53,7 +53,7 @@ export class WalletPage implements OnInit {
       component: NotificationComponent,
       componentProps: {
         sourceFired: 'client',
-        data: this.wallet
+        data: this.modelService.wallet
       }
     });
     await popover.present();
@@ -66,7 +66,7 @@ export class WalletPage implements OnInit {
       res => {
         this.isLoading = false;
         if (res?.data) {
-          this.wallet = {amount: res.data.balance, email: this.authService.user.value.email};
+          this.modelService.wallet = {amount: res.data.balance, email: this.authService.user.value.email};
         }
       },
       err => {
