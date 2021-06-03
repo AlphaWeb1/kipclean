@@ -9,15 +9,15 @@
       </ion-card-title>
       <ion-icon name="notifications" class="notification" (click)="showNotifications($event)"></ion-icon>
     </div>
-    <div class="order-body">
-      <ion-list *ngIf="orders?.length">
-        <ion-item *ngFor="let order of orders; let idx = index">
+    <div class="order-body" *ngIf="!isLoading">
+      <ion-list *ngIf="modelService.orders?.length">
+        <ion-item *ngFor="let order of modelService.orders; let idx = index">
           <ion-icon slot="start" name="trash"></ion-icon>
           <ion-label>{{order.unit}} Unit <small>(₦{{order.amount}})</small></ion-label>
-          <ion-icon slot="end" name="ellipsis-horizontal"></ion-icon>
+          <span class="float-end status {{ order.status == 'SUCCESS' ? 'success' : 'pending'}}">{{ order.status}}</span>
         </ion-item>
       </ion-list>
-      <div class="notice-message" *ngIf="!orders?.length"> No record found.</div>
+      <div class="notice-message" *ngIf="!modelService.orders?.length"> No record found.</div>
     </div>
   </div>
 </ion-content>

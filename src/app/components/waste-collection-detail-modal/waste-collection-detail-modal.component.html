@@ -1,3 +1,23 @@
-<p>
-  waste-collection-detail-modal works!
-</p>
+<ion-content>
+  <div class="modal-main">
+    <div class="modal-body">
+      <div class="modal-title">
+        <ion-card-title>Waste Collection Transaction History</ion-card-title>
+        <ion-button color="light" (click)="closeModal()">
+          <ion-icon name="close" slot="icon-only"></ion-icon>
+        </ion-button>
+      </div>
+      <div class="modal-task-list">
+        <div class="modal list-body" *ngIf="!isLoading">
+          <ion-list *ngIf="wasteCollections?.length">
+            <ion-item *ngFor="let wastecoll of wasteCollections; let idx=index">
+              <ion-label><span class="float-end">₦{{wastecoll.amount}}</span> ({{wastecoll.reference}})</ion-label>
+              <span class="float-end status {{ wastecoll.isExpired ? 'pending' : 'success'}}">{{ wastecoll.isExpired ? 'expired' : 'active'}}</span>
+            </ion-item>
+          </ion-list>
+          <div class="notice-message" *ngIf="!wasteCollections?.length"> No record found.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</ion-content>

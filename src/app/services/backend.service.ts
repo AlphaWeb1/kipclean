@@ -54,9 +54,14 @@ export class BackendService {
     return this.http.get<ApiDataResponse>(`${environment.apiUrl}/orders${queryParam ? `?${queryParam}`: ''}`);
   }
 
-  getFeedbacks(queryParamsObject, token?: string) {
+  getFeedbacks(queryParamsObject?: any, token?: string) {
     const queryParam = this.util.generateQueryParams(queryParamsObject);
     return this.http.get<ApiDataResponse>(`${environment.apiUrl}/feedbacks${queryParam ? `?${queryParam}`: ''}`);
+  }
+
+  getUserFeedbacks(queryParamsObject?: any, token?: string) {
+    const queryParam = this.util.generateQueryParams(queryParamsObject);
+    return this.http.get<ApiDataResponse>(`${environment.apiUrl}/feedbacks/user${queryParam ? `?${queryParam}`: ''}`);
   }
 
   gerUsers(queryParamsObject, token?: string) {
@@ -94,15 +99,6 @@ export class BackendService {
         payload
     );
   }
-  
-  updateWallet(payload, queryParamsObject?: any, token?: string) {
-    const authToken = token ? token : this.auth.accessToken.value;
-    const queryParam = this.util.generateQueryParams(queryParamsObject);
-    return this.http.patch<ApiDataResponse>(
-      `${environment.apiUrl}wallets/fund`,
-        payload
-    );
-  }
 
   createWallet(payload, token?: string, queryParamsObject?: any) {
     const authToken = token ? token : this.auth.accessToken.value;
@@ -113,7 +109,15 @@ export class BackendService {
     );
   }
   
-
+  updateWallet(payload, queryParamsObject?: any, token?: string) {
+    const authToken = token ? token : this.auth.accessToken.value;
+    const queryParam = this.util.generateQueryParams(queryParamsObject);
+    return this.http.patch<ApiDataResponse>(
+      `${environment.apiUrl}wallets/fund`,
+        payload
+    );
+  }
+  
   createNotification(payload, token?: string, queryParamsObject?: any) {
     const authToken = token ? token : this.auth.accessToken.value;
     const queryParam = this.util.generateQueryParams(queryParamsObject);
@@ -132,7 +136,16 @@ export class BackendService {
     );
   }
 
-  updateProfile(payload: User, token?: string, queryParamsObject?: any){
+  createFeedback(payload, token?: string, queryParamsObject?: any) {
+    const authToken = token ? token : this.auth.accessToken.value;
+    const queryParam = this.util.generateQueryParams(queryParamsObject);
+    return this.http.post<ApiDataResponse>(
+      `${environment.apiUrl}feedbacks${queryParam ? `?${queryParam}`: ''}`,
+        payload
+    );
+  }
+
+  updateProfile(payload: User | any, token?: string, queryParamsObject?: any){
     return this.http.patch<ApiDataResponse>(
       `${environment.apiUrl}user/profile`,
         payload

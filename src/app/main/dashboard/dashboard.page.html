@@ -2,16 +2,17 @@
   <div class="dashboard-main">
     <div class="dashboard-header">
       <ion-tab-bar slot="bottom" class="custom-tabbar">
-        <ion-tab-button tab="waste-collection" class="inherit-background" title="Waste collection dates">
+        <ion-tab-button tab="waste-collection" class="inherit-background" title="Waste collection dates" routerLink="/main/tabs/waste-collection">
           <ion-icon name="calendar" color="dark"></ion-icon>
           <!-- <ion-badge>6</ion-badge> -->
         </ion-tab-button>
-        <ion-tab-button class="inherit-background" routerLink="/main/tabs/waste-collection">
-          <ion-text class="dash-head-titled-text">next collection</ion-text>
-          <ion-label class="text-bold keep-inline">Tuesday, 24, Nov</ion-label>
+        <ion-tab-button class="inherit-background" (click)="collectionDetail()">
+          <ion-text class="dash-head-titled-text" *ngIf="modelService.collectionDetail && wasteCollections[0]?.isExpired !== true">next collection</ion-text>
+          <ion-label class="text-bold keep-inline" *ngIf="modelService.collectionDetail && wasteCollections[0]?.isExpired !== true">{{modelService.collectionDetail.collection_date}}</ion-label>
+          <h6 class="text-center" *ngIf="!modelService.collectionDetail || wasteCollections[0]?.isExpired">Choose Collection Date</h6>
         </ion-tab-button>
-        <ion-tab-button class="inherit-background" (click)="showCollectionSearch($event)">
-          <ion-icon name="search" color="dark"></ion-icon>
+        <ion-tab-button class="inherit-background" (click)="collectionDetail()">
+          <ion-icon name="{{!modelService.collectionDetail || wasteCollections[0]?.isExpired ? 'add': 'information'}}" color="dark"></ion-icon>
         </ion-tab-button>
       </ion-tab-bar>
       <ion-icon name="notifications" class="notification" (click)="showNotifications($event)"></ion-icon>

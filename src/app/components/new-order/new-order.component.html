@@ -1,3 +1,63 @@
-<p>
-  new-order works!
-</p>
+<ion-content>
+  <div class="modal-main">
+    <div class="modal-body">
+      <div class="modal-title">
+        <ion-card-title>Request Waste Collection</ion-card-title>
+        <ion-button color="light" (click)="closeModal()">
+          <ion-icon name="close" slot="icon-only"></ion-icon>
+        </ion-button>
+      </div>
+      <form class="modal-form">
+        <div class="form-controls-wrapper">
+          <h4 class="text-center">₦{{modelService.collectionFee}} per month</h4>
+          <ion-text><strong>Note:</strong> Waste collection subscription above three months entitles you to a free recycle bin</ion-text>
+        </div>
+        <div class="form-controls-wrapper">
+          <div class="input-wrapper">
+            <div class="input-inner">
+              <ion-item class="reg-form-input-item">
+                <ion-icon class="input-icon float-label" name="calendar"></ion-icon>
+                <ion-input class="input reg-form-input" name="unit" type="number" placeholder="Number of Months" [(ngModel)]="unit" required></ion-input>
+              </ion-item>
+              <span class="err-text" *ngIf="validators?.unit && validators.unit?.invalid">
+                {{validators?.unit?.message}}
+              </span>
+            </div>
+          </div>
+          <div class="input-wrapper">
+            <div class="input-inner">
+              <ion-item class="reg-form-input-item">
+                <ion-icon class="input-icon float-label" name="calendar"></ion-icon>
+                <ion-select class="input reg-form-input" name="collIdx" type="number" interface="alert" placeholder="Select Collection Date" [(ngModel)]="collIdx" required>
+                  <ion-select-option *ngFor="let collDate of modelService.collectionDates; let idx = index" value="{{idx}}">{{collDate.location}} ({{collDate.date}})</ion-select-option>
+                </ion-select>
+              </ion-item>
+              <span class="err-text" *ngIf="validators?.collIdx && validators.collIdx?.invalid">
+                {{validators?.collIdx?.message}}
+              </span>
+            </div>
+          </div>
+          <div class="input-wrapper">
+            <div class="input-inner">
+              <ion-item class="reg-form-input-item">
+                <ion-icon class="input-icon float-label" name="navigate-circle"></ion-icon>
+                <ion-input class="input reg-form-input" name="location" type="text" placeholder="Collection Address" [(ngModel)]="location" required></ion-input>
+              </ion-item>
+              <span class="err-text" *ngIf="validators?.location && validators.location?.invalid">
+                {{validators?.location?.message}}
+              </span>
+            </div>
+          </div>
+          <div class="input-wrapper">
+            <div class="input-inner">
+              <button class="reg-form-button" [disabled]="!(unit && location && collIdx > -1) || inProcess" (click)="updateCollectionDate()">
+                <span *ngIf="!inProcess">Make Payment</span>
+                <ion-spinner name="lines-small" *ngIf="inProcess"></ion-spinner>
+              </button>
+            </div>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+</ion-content>

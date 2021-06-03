@@ -263,3 +263,20 @@ ion-modal#ion-overlay-2, ion-modal .modal-wrapper, ion-modal ion-backdrop, ion-m
     width: 100%;
     height: 80vh;
 }
+
+/** Status Style **/
+.pending{
+    color: #ff4f4f !important;
+}
+.success{
+    color: #4fff69 !important;
+}
+.failed{
+    color: #ff1111 !important;
+}
+.processing{
+    color: #4f92ff !important;
+}
+.cancelled{
+    color: #f2ff3d !important;
+}

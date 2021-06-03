@@ -13,12 +13,16 @@ import { TopupModalComponent } from '../components/topup-modal/topup-modal.compo
 import { NotificationComponent } from '../components/notification/notification.component';
 import { OrderRecyclebinModalModule } from '../components/order-recyclebin-modal/order-recyclebin-modal.module';
 import { OrderRecyclebinModalComponent } from '../components/order-recyclebin-modal/order-recyclebin-modal.component';
+import { NewOrderComponent } from '../components/new-order/new-order.component';
+import { NewOrderModule } from '../components/new-order/new-order.module';
+import { WasteCollectionDetailModalModule } from '../components/waste-collection-detail-modal/waste-collection-detail-modal.module';
 
 @NgModule({
   entryComponents: [
     TopupModalComponent,
     NotificationComponent,
-    OrderRecyclebinModalComponent
+    OrderRecyclebinModalComponent,
+    NewOrderComponent
   ],
   imports: [
     CommonModule,
@@ -27,6 +31,8 @@ import { OrderRecyclebinModalComponent } from '../components/order-recyclebin-mo
     NotificationModule,
     TopupModalModule,
     OrderRecyclebinModalModule,
+    WasteCollectionDetailModalModule,
+    NewOrderModule,
     MainPageRoutingModule
   ],
   declarations: [MainPage]
