@@ -7,8 +7,11 @@ import { Wallet } from 'src/app/interfaces/wallet';
 })
 export class ModelService {
   collectionDates = [];
+  collectionDetail;
   binFee: number = 3000;
+  collectionFee: number = 1000;
   notifications = [];
+  orders = [];
   wallet: Wallet ;
 
   constructor() { 

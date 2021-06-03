@@ -6,5 +6,7 @@ export interface User {
     username?: string; 
     password?: string;
     address?: string;
+    collection_date?: string;
+    location?: string;
     role?: string;
 }

@@ -78,16 +78,18 @@ export class WalletPage implements OnInit {
 
   private getTransactions(accessToken: string){
     this.transactions = [];
+    this.isLoading = true;
     this.backendService.getTransactions({accessToken}).subscribe(
       res => {
         if (res?.data) {
           this.transactions = res.data.filter(transaction => transaction.type === 'WALLET');
+          this.isLoading = false;
         }
       },
       err => {
+        this.isLoading = false;
         this.utilService.showAlert(`Server Error`, 'Unable to connect to server. Please try again.');
       }
     );
   }
-
 }

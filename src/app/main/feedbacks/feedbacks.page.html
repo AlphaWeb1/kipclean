@@ -16,24 +16,14 @@
             <div class="input-wrapper">
               <div class="input-inner">
                 <ion-item class="reg-form-input-item">
-                  <ion-icon class="input-icon float-label" name="person-circle"></ion-icon>
-                  <ion-input class="input reg-form-input" type="text" placeholder="Program Title" name="programTitle"  [(ngModel)]="programTitle" required></ion-input>
-                </ion-item>
-              </div>
-              <span class="err-text" *ngIf="!programTitle && programEdited">
-                Program title is required
-              </span>
-            </div>
-            <div class="input-wrapper">
-              <div class="input-inner">
-                <ion-item class="reg-form-input-item">
                   <ion-icon name="document-text" class="inout-icon float-label"></ion-icon>
-                  <ion-textarea class="input  reg-form-input" placeholder="Feedback..." name="feedback"  [(ngModel)]="feedback" required></ion-textarea>
+                  <ion-textarea class="input  reg-form-input" placeholder="Feedback..." name="message" [(ngModel)]="message" required></ion-textarea>
                 </ion-item>
               </div>
             </div>
-            <ion-button class="feedback-button" color="dark" (click)="sendFeedback($event)">
-              Send Review
+            <ion-button class="feedback-button" [disabled]="!message || inProcess"color="dark" (click)="sendFeedback()">
+              <span *ngIf="!inProcess">Send Review</span>
+              <ion-spinner name="lines-small" *ngIf="inProcess"></ion-spinner>
             </ion-button>
           </div>
         </form>
@@ -42,29 +32,15 @@
         <div class="dash-list-head">
           <h4>Feedbacks</h4>
         </div>
-        <div class="dash list-body">
-          <ion-list>
-            <ion-item>
-              <ion-label>Transaction Description <span class="float-end"></span></ion-label>
-              <ion-icon slot="end" name="ellipsis-horizontal"></ion-icon>
-            </ion-item>
-            <ion-item>
-              <ion-label>Transaction Description <span class="float-end"></span></ion-label>
-              <ion-icon slot="end" name="ellipsis-horizontal"></ion-icon>
-            </ion-item>
-            <ion-item>
-              <ion-label>Transaction Description <span class="float-end"></span></ion-label>
-              <ion-icon slot="end" name="ellipsis-horizontal"></ion-icon>
-            </ion-item>
-            <ion-item>
-              <ion-label>Transaction Description <span class="float-end"></span></ion-label>
-              <ion-icon slot="end" name="ellipsis-horizontal"></ion-icon>
-            </ion-item>
-            <ion-item>
-              <ion-label>Transaction Description <span class="float-end"></span></ion-label>
+        <div class="dash list-body" *ngIf="!isLoading">
+          <ion-list *ngIf="feedbacks?.length">
+            <ion-item *ngFor="let feedback of feedbacks; let idx = index">
+              <ion-label>{{ feedback.message }}</ion-label>
+              <span class="float-end status {{feedback.status == 'read'? 'success' : 'pending'}}">{{feedback.status}}</span>
               <ion-icon slot="end" name="ellipsis-horizontal"></ion-icon>
             </ion-item>
           </ion-list>
+          <div class="notice-message" *ngIf="!feedbacks?.length"> No record found.</div>
         </div>
       </div>
     </div>

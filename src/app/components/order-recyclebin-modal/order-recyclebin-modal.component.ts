@@ -67,7 +67,7 @@ export class OrderRecyclebinModalComponent implements OnInit {
         },
         err =>{
           this.inProcess = false;
-          this.utilService.showToast('Server Error', 'Unable to process transaction.');
+          this.utilService.showAlert('Server Error', 'Unable to process transaction.');
         });
     }
   }
