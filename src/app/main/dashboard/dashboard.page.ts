@@ -25,6 +25,7 @@ export class DashboardPage implements OnInit {
   wasteCollections = [];
   isFetched: boolean = false;
   datejs = dayjs();
+  collLoaded: boolean;
   
   constructor(
     private authService: AuthenticationService,
@@ -37,7 +38,6 @@ export class DashboardPage implements OnInit {
 
   ngOnInit() {
     this.getWalletBalance(this.authService.accessToken.value);
-    // this.getTransactions(this.authService.accessToken.value);
     this. getCollectionDates();
     this.initCollectionDetail();
     this.getTransCollections(this.authService.accessToken.value);
@@ -108,7 +108,7 @@ export class DashboardPage implements OnInit {
   }
 
   private collectionDetail(){
-    if (this.modelService.collectionDetail  && this.wasteCollections[0]?.isExpired !== true) {
+    if (this.modelService.collectionDetail && (this.wasteCollections[0]?.isExpired !== true && this.wasteCollections.length)) {
       this.showCollectionDetail();
     } else {
       this.newCollectionModal();
@@ -116,12 +116,22 @@ export class DashboardPage implements OnInit {
   }
 
   private initCollectionDetail(){
-    const colldate = dayjs(this.authService.user.value.collection_date);
+    this.collLoaded = false;
     this.modelService.collectionDetail = {
-      collection_date: (
-          dayjs() > colldate ? colldate.add(7, 'day').format('ddd, D MMM YYYY') : colldate.format('ddd, D MMM YYYY')
-        ),
+      collection_date: this.getNextCollectionDate(this.authService.user.value.collection_date),
       location: this.authService.user.value.location
+    }
+  }
+
+  private getNextCollectionDate(setDay: string = this.modelService.days[dayjs().day()]){
+    const setDateIndex = this.modelService.days.indexOf(setDay),
+    today = dayjs().day() ;
+    this.collLoaded = true;
+    if (today === setDateIndex) {
+      return `Today: ${dayjs().format("ddd, D MMM YYYY")}`;
+    } else {
+      const nextDays = (setDateIndex + 7 - today) % 7;
+      return dayjs().add(nextDays, 'day').format('ddd, D MMM YYYY');
     }
   }
   
@@ -158,6 +168,7 @@ export class DashboardPage implements OnInit {
           this.wasteCollections[0].expiredDate = dayjs(this.wasteCollections[0].createdAt).add(this.wasteCollections[0].unit, 'month');
           this.wasteCollections[0].isExpired = this.wasteCollections[0].expiredDate < dayjs() ? true : false;
         }
+        
       },
       err => {
         this.utilService.showAlert(`Server Error`, 'Unable to connect to server. Please try again.');
