@@ -83,6 +83,10 @@ export class WalletPage implements OnInit {
       res => {
         if (res?.data) {
           this.transactions = res.data.filter(transaction => transaction.type === 'WALLET');
+          this.transactions.forEach(transaction => {
+            transaction.wallet_stat = transaction.amount < 0 ? 'debit' : 'credit';
+            transaction.amount = transaction.amount < 0 ? transaction.amount * -1 : transaction.amount;
+          });
           this.isLoading = false;
         }
       },

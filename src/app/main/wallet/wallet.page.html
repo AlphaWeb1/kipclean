@@ -23,7 +23,7 @@
         <div class="dash list-body" *ngIf="!isLoading">
           <ion-list *ngIf="transactions?.length">
             <ion-item *ngFor="let trans of transactions; let idx=index">
-              <ion-label><span class="float-end">₦{{trans.amount}}</span> {{trans.type}} ({{trans.reference}})</ion-label>
+              <ion-label><span class="float-end">₦{{trans.amount}}</span> {{trans.wallet_stat}} ({{trans.reference}})</ion-label>
               <span class="float-end status {{ trans.status == 'SUCCESS' ? 'success' : 'pending'}}">{{ trans.status}}</span>
             </ion-item>
           </ion-list>

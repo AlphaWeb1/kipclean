@@ -65,12 +65,8 @@ export class NewOrderComponent implements OnInit {
           res => {
             this.utilService.showToast('Waste collection request is successfully processed');
             this.inProcess = false;
-            
-            const colldate = dayjs(res.data.collection_date);
             this.modelService.collectionDetail = {
-              collection_date: (
-                  dayjs() > colldate ? colldate.add(7, 'day').format('ddd, D MMM YYYY') : colldate.format('ddd, D MMM YYYY')
-                ),
+              collection_date: this.getNextCollectionDate(res.data.collection_date),
               location: res.data.location
             }
             
@@ -97,6 +93,17 @@ export class NewOrderComponent implements OnInit {
         this.utilService.showAlert(`Server Error`, err.error.message);
         this.inProcess = false;
       });
+    }
+  }
+
+  private getNextCollectionDate(setDay: string = this.modelService.days[dayjs().day()]){
+    const setDateIndex = this.modelService.days.indexOf(setDay),
+      today = dayjs().day() ;
+    if (today === setDateIndex) {
+      return `Today: ${dayjs().format("ddd, D MMM YYYY")}`;
+    } else {
+      const nextDays = (setDateIndex + 7 - today) % 7;
+      return dayjs().add(nextDays, 'day').format('ddd, D MMM YYYY');
     }
   }
 

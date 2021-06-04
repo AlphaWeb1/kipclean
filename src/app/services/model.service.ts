@@ -13,19 +13,22 @@ export class ModelService {
   notifications = [];
   orders = [];
   wallet: Wallet ;
+  days = [
+    "Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"
+  ];
 
   constructor() { 
     this.initCollectionDate();
   }
   initCollectionDate(){
     this.collectionDates = [
-      { date: "2021-05-27", location: "Lekki Phase 1", },
-      { date: "2021-05-28", location: "Lekki Phase 11", },
-      { date: "2021-05-29", location: "Victoria Island", },
-      { date: "2021-05-30", location: "Lagos Island", },
-      { date: "2021-05-31", location: "Ibeju Lekki", },
-      { date: "2021-06-01", location: "Sangotedo - Abijoh", },
-      { date: "2021-06-02", location: "Ikoyi Lagos Island", },
+      { date: "Thursday", location: "Lekki Phase 1", },
+      { date: "Friday", location: "Lekki Phase 11", },
+      { date: "Saturday", location: "Victoria Island", },
+      { date: "Sunday", location: "Lagos Island", },
+      { date: "Monday", location: "Ibeju Lekki", },
+      { date: "Tuesday", location: "Sangotedo - Abijoh", },
+      { date: "Wednesday", location: "Ikoyi Lagos Island", }
     ]
 
   }
