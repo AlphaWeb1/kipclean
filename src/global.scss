@@ -55,6 +55,18 @@
     cursor: pointer;
     border-radius: 0.3rem;
 }
+button.form-button {
+    padding: 0.5rem;
+    border-radius: 0.4rem;
+    background: #cccccc;
+    font-weight: 600;
+}
+button.form-button:hover {
+    background: #eaeaea;
+}
+button.form-button.completed {
+    background: #64ff7b;
+}
 
 /** Homepage and auth page styling **/
 .home-main, .auth-main, .dashboard-main{
@@ -197,6 +209,9 @@ ion-content{
     top: 0.5rem;
     font-size: 18px;
 }
+.d-none{
+    display: none;
+}
 .inherit-background{
     background: inherit;
 }
@@ -246,7 +261,7 @@ ion-modal#ion-overlay-2, ion-modal .modal-wrapper, ion-modal ion-backdrop, ion-m
 .notice-message {
     text-align: center;
     width: 100%;
-    padding: 0.5rem;
+    padding: 1rem 0.5rem;
     color: #750000;
 }
 

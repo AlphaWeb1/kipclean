@@ -1,0 +1,26 @@
+<ion-content [fullscreen]="true">
+  <div class="dashboard-main">
+    <div class="dashboard-header">
+      <ion-label class="back-button" routerLink="/staff/tabs/home">
+        <ion-icon name="return-up-back-outline"></ion-icon>
+      </ion-label>
+      <h4>Feedbacks</h4>
+      <!-- <ion-card-title slot="end"> Review</ion-card-title> -->
+      <ion-icon name="notifications" class="notification d-none" (click)="showNotifications($event)"></ion-icon>
+    </div>
+    <div class="dashboad-body">
+      <div class="dash-task-list">
+        <div class="dash list-body" *ngIf="!isLoading">
+          <ion-list *ngIf="feedbacks?.length">
+            <ion-item *ngFor="let feedback of feedbacks; let idx = index" (click)="showFeedback(feedback, idx)">
+              <ion-label>{{ feedback.message }}</ion-label>
+              <span class="float-end status {{feedback.status == 'read'? 'success' : 'pending'}}">{{feedback.status}}</span>
+              <ion-icon slot="end" name="ellipsis-horizontal"></ion-icon>
+            </ion-item>
+          </ion-list>
+          <div class="notice-message" *ngIf="!feedbacks?.length"> No record found.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</ion-content>

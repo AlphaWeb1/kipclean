@@ -4,7 +4,6 @@
       <ion-tab-button tab="home" class="custom-tab inherit-background" [ngClass]="{'active': router.url == '/staff/tabs/home'}" color="dark">
         <ion-icon name="home" color="dark"></ion-icon>
         <ion-label color="dark">Home</ion-label>
-        <!-- <ion-badge>6</ion-badge> -->
       </ion-tab-button>
   
       <ion-tab-button tab="orders" class="custom-tab inherit-background" [ngClass]="{'active': router.url == '/staff/tabs/orders'}">
@@ -13,12 +12,12 @@
       </ion-tab-button>
   
       <ion-tab-button tab="collections" class="custom-tab inherit-background" [ngClass]="{'active': router.url == '/staff/tabs/collections'}">
-        <ion-icon name="list" color="dark"></ion-icon>
-        <ion-label>Order</ion-label>
+        <ion-icon name="calendar" color="dark"></ion-icon>
+        <ion-label>Waste Collections</ion-label>
       </ion-tab-button>
   
-      <ion-tab-button tab="users" class="custom-tab inherit-background" [ngClass]="{'active': router.url == '/staff/tabs/users'}">
-        <ion-icon name="persons" color="dark"></ion-icon>
+      <ion-tab-button tab="profile" class="custom-tab inherit-background">
+        <ion-icon name="person" color="dark"></ion-icon>
         <ion-label>Profile</ion-label>
       </ion-tab-button>
   

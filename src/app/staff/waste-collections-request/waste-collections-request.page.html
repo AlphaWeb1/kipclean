@@ -1,0 +1,32 @@
+<ion-content [fullscreen]="true">
+  <div class="dashboard-main">
+    <div class="dashboard-header">
+      <ion-label class="back-button" routerLink="/staff/tabs/home">
+        <ion-icon name="return-up-back-outline"></ion-icon>
+      </ion-label>
+      <h4>Waste Collection Request</h4>
+      <ion-icon name="notifications" class="notification d-none" (click)="showNotifications($event)"></ion-icon>
+    </div>
+    <div class="dashboad-body">
+      <div class="dash-task-list">
+        <div class="dash list-body" *ngIf="!isLoading">
+          <ion-list *ngIf="wasteCollections?.length">
+            <div class="inner-item" *ngFor="let wastecoll of wasteCollections; let idx = index">
+              <div class="inner-item-top">
+                <ion-item>
+                  <ion-label>{{wastecoll.unit}} Months <span class="float-end">₦{{wastecoll.amount}}</span> ({{wastecoll.reference}})</ion-label>
+                  <span class="float-end status {{ wastecoll.status === 'SUCCESS' || wastecoll.status === 'COMPLETED' ? 'success' : 'pending'}}">{{ wastecoll.status}}</span>
+                </ion-item>
+              </div>
+              <div class="inner-item-bottom">
+                <span class="float-end status {{ wastecoll.isExpired ? 'pending' : 'success'}}">{{ wastecoll.isExpired ? 'expired' : 'active'}}</span>
+                <button *ngIf="wastecoll.status === 'SUCCESS'" class="form-button completed" (click)="confirmCompleted(wastecoll, idx)">Confirm Completed</button>
+              </div>
+            </div>
+          </ion-list>
+          <div class="notice-message" *ngIf="!wasteCollections?.length"> No record found.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</ion-content>
