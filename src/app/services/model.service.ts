@@ -12,6 +12,7 @@ export class ModelService {
   collectionFee: number = 1000;
   notifications = [];
   orders = [];
+  users = [];
   wallet: Wallet ;
   days = [
     "Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"

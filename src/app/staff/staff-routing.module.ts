@@ -11,6 +11,30 @@ const routes: Routes = [
       {
         path: 'home',
         loadChildren: () => import('./home/home.module').then( m => m.HomePageModule)
+      },
+      {
+        path: 'users',
+        loadChildren: () => import('./users/users.module').then( m => m.UsersPageModule)
+      },
+      {
+        path: 'wallet-funds',
+        loadChildren: () => import('./wallet-funds/wallet-funds.module').then( m => m.WalletFundsPageModule)
+      },
+      {
+        path: 'collections',
+        loadChildren: () => import('./waste-collections-request/waste-collections-request.module').then( m => m.WasteCollectionsRequestPageModule)
+      },
+      {
+        path: 'feedbacks',
+        loadChildren: () => import('./feedbacks/feedbacks.module').then( m => m.FeedbacksPageModule)
+      },
+      {
+        path: 'profile',
+        loadChildren: () => import('./profile/profile.module').then( m => m.ProfilePageModule)
+      },
+      {
+        path: 'orders',
+        loadChildren: () => import('./recycle-bin-order/recycle-bin-order.module').then( m => m.RecycleBinOrderPageModule)
       }
     ]
   },
@@ -18,7 +42,7 @@ const routes: Routes = [
     path: '',
     redirectTo: '/staff/tabs/home',
     pathMatch: 'full'
-  }
+  },
 ];
 
 @NgModule({

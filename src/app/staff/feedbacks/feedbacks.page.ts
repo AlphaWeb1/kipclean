@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-
-import { PopoverController } from '@ionic/angular';
+import { ModalController, PopoverController } from '@ionic/angular';
 import * as dayjs from 'dayjs';
-
+import { FeedbackInfoComponent } from 'src/app/components/feedback-info/feedback-info.component';
 import { NotificationComponent } from 'src/app/components/notification/notification.component';
+
 import { BackendService } from 'src/app/services/backend.service';
 import { UtilService } from 'src/app/services/util.service';
 
@@ -20,13 +20,14 @@ export class FeedbacksPage implements OnInit {
   feedbacks: any = [];
 
   constructor(
+    public popupModal: ModalController,
     private popoverDrop: PopoverController,
     private utilService: UtilService,
-    private backendService: BackendService,
-  ) {}
+    private backendService: BackendService
+  ) { }
 
   ngOnInit() {
-    this.getUserFeedbacks();
+    this.getFeedbacks();
   }
 
   sendFeedback(){
@@ -36,7 +37,7 @@ export class FeedbacksPage implements OnInit {
       this.inProcess = true;
       this.backendService.createFeedback({message: this.message, status: this.status}).subscribe(
         res => {
-          this.getUserFeedbacks();
+          this.getFeedbacks();
           this.inProcess = false;
           this.utilService.showToast(res.message);
         },
@@ -47,10 +48,30 @@ export class FeedbacksPage implements OnInit {
       );
     }
   }
+  
+  async showFeedback(feedback, idx){
 
-  private getUserFeedbacks(){
+    const modal = await this.popupModal.create({
+      component: FeedbackInfoComponent,
+      componentProps: {
+        sourceFired: 'client',
+        feedback,
+        idx
+      }
+    });
+    
+    modal.onDidDismiss().then(
+      data => {
+        this.getFeedbacks();
+        // this.feedbacks[idx].status = 'read';
+      }
+    );
+    return await modal.present();
+  }
+
+  private getFeedbacks(){
     this.isLoading = false;
-    this.backendService.getUserFeedbacks().subscribe(
+    this.backendService.getFeedbacks().subscribe(
       res => {
       this.feedbacks = [];
         if (res?.data) {
@@ -77,4 +98,5 @@ export class FeedbacksPage implements OnInit {
     });
     return await popover.present();
   }
+
 }

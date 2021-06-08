@@ -16,8 +16,6 @@ import { UtilService } from '../services/util.service';
 })
 export class MainPage implements OnInit {
 
-  orders = [];
-
   constructor(
     public popupModal: ModalController,
     private authService: AuthenticationService,
@@ -64,11 +62,11 @@ export class MainPage implements OnInit {
   
   loadOrders(accessToken){
     
-    this.orders = [];
     this.backendService.getTransactions({accessToken}).subscribe(
       res => {
         if (res?.data) {
-          this.orders = res.data.filter(transaction => transaction.type === 'RECYCLE BIN ORDER');
+          const orders = res.data.filter(transaction => transaction.type === 'RECYCLE BIN ORDER');
+          this.modelService.orders = orders;
         }
       },
       err => {

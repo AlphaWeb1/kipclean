@@ -14,7 +14,7 @@
         <ion-item *ngFor="let order of modelService.orders; let idx = index">
           <ion-icon slot="start" name="trash"></ion-icon>
           <ion-label>{{order.unit}} Unit <small>(₦{{order.amount}})</small></ion-label>
-          <span class="float-end status {{ order.status == 'SUCCESS' ? 'success' : 'pending'}}">{{ order.status}}</span>
+          <span class="float-end status {{ order.status == 'SUCCESS' || order.status === 'COMPLETED' ? 'success' : 'pending'}}">{{ order.status}}</span>
         </ion-item>
       </ion-list>
       <div class="notice-message" *ngIf="!modelService.orders?.length"> No record found.</div>

@@ -1,0 +1,40 @@
+<ion-content [fullscreen]="true">
+  <div class="profile-main">
+    <div class="profile-header">
+      <ion-label class="back-button" routerLink="/staff/tabs/home">
+        <ion-icon name="return-up-back-outline"></ion-icon>
+      </ion-label>
+      <h4>Profile</h4>
+      <ion-icon name="notifications" class="notification d-none" (click)="showNotifications($event)"></ion-icon>
+    </div>
+    <div class="profile-body">
+      <ion-card>
+        <div class="d-flex flex-center">
+          <ion-icon class="user-icon" name="person"></ion-icon>
+        </div>
+        <ion-card-header class="flex-header">
+          <ion-card-title>{{ authService.user.value.first_name }} {{ authService.user.value.surname }}</ion-card-title>
+        </ion-card-header>
+        <ion-card-content>
+          <ion-list>
+            <ion-item lines="none">
+              <ion-label>
+                {{ authService.user.value.email }}
+              </ion-label>
+            </ion-item>
+            <ion-item lines="none">
+              <ion-label>
+              {{ authService.user.value.phone }}
+              </ion-label>
+            </ion-item>
+            <ion-item lines="none">
+              <ion-label>
+              {{ authService.user.value.address }}
+              </ion-label>
+            </ion-item>
+          </ion-list>
+        </ion-card-content>
+      </ion-card>
+    </div>
+  </div>
+</ion-content>

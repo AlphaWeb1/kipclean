@@ -51,10 +51,11 @@ export class AuthenticationService {
   async checkAccessToken() {
     const result = await Storage.get({ key: 'kclToken' });
     const accessToken = JSON.parse(result.value);
+    const user = await this.checkUser();
     if (accessToken) {
       this.loginState.next(true);
       this.accessToken.next(accessToken);
-      this.router.navigateByUrl('/main');
+      this.router.navigateByUrl(user.role === 'admin' ? '/staff' : '/main');
     }
   }
 

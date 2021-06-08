@@ -1,0 +1,41 @@
+.dashboard-header{
+    display: flex;
+    text-align: center;
+    width: 100%;
+    ion-label.back-button {
+        margin-right: 2rem;
+    }
+    h4{
+        text-align: center;
+        width: 65%;
+    }
+    ion-card-title {
+        font-weight: 600;
+        padding-top: 0.7rem;
+    }
+}
+.feedback-tile-wrapper {
+    text-align: center;
+    background: #ffffff;
+    padding: 1rem;
+    border-radius: 0.5rem;
+    .feedback-button, .feexback-button>button{
+        background: #3f3f3f;
+    }
+}
+
+.inner-item {
+    display: flex;
+    flex-direction: column;
+    padding: 0.2rem 0.5rem;
+    margin-bottom: 0.5rem;
+    justify-content: space-around;
+    .inner-item-top {
+        margin-bottom: 0.3rem;
+    }
+    .inner-item-bottom {
+        padding: 0.3rem;
+        display: flex;
+        justify-content: space-between;
+    }
+}

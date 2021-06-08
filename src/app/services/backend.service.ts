@@ -29,14 +29,17 @@ export class BackendService {
 
   getWasteCollectionDates(queryParamsObject, token?: string) {
     const queryParam = this.util.generateQueryParams(queryParamsObject);
-    // const authToken = token ? token : this.auth.accessToken.value;
-    // return this.http.get<ApiDataResponse>(`${environment.apiUrl}/waste-collection-dates?auth=${authToken}${queryParam ? `&${queryParam}`: ''}`);
     return this.http.get<ApiDataResponse>(`${environment.apiUrl}/waste-collection-dates${queryParam ? `?${queryParam}`: ''}`);
   }
 
-  getTransactions(queryParamsObject, token?: string) {
+  getTransactions(queryParamsObject?, token?: string) {
     const queryParam = this.util.generateQueryParams(queryParamsObject);
     return this.http.get<ApiDataResponse>(`${environment.apiUrl}/transactions${queryParam ? `?${queryParam}`: ''}`);
+  }
+
+  getAllTransactions(queryParamsObject?, token?: string) {
+    const queryParam = this.util.generateQueryParams(queryParamsObject);
+    return this.http.get<ApiDataResponse>(`${environment.apiUrl}/transactions/all${queryParam ? `?${queryParam}`: ''}`);
   }
 
   getWallet(queryParamsObject?: any, token?: string) {
@@ -64,15 +67,20 @@ export class BackendService {
     return this.http.get<ApiDataResponse>(`${environment.apiUrl}/feedbacks/user${queryParam ? `?${queryParam}`: ''}`);
   }
 
-  gerUsers(queryParamsObject, token?: string) {
+  getUsers(queryParamsObject?, token?: string) {
     const queryParam = this.util.generateQueryParams(queryParamsObject);
     return this.http.get<ApiDataResponse>(`${environment.apiUrl}/users${queryParam ? `?${queryParam}`: ''}`);
   }
 
-  gerUser(queryParamsObject, token?: string) {
+  getUser(queryParamsObject?, token?: string) {
     const queryParam = this.util.generateQueryParams(queryParamsObject);
     return this.http.get<ApiDataResponse>(`${environment.apiUrl}/user${queryParam ? `?${queryParam}`: ''}`);
   }
+
+  // getCustomers(queryParamsObject?, token?: string) {
+  //   const queryParam = this.util.generateQueryParams(queryParamsObject);
+  //   return this.http.get<ApiDataResponse>(`${environment.apiUrl}/customers${queryParam ? `?${queryParam}`: ''}`);
+  // }
 
   getAny(queryParamsObject, token?: string, urlPostFix?: string) {
     const queryParam = this.util.generateQueryParams(queryParamsObject);
@@ -96,6 +104,15 @@ export class BackendService {
     const queryParam = this.util.generateQueryParams(queryParamsObject);
     return this.http.post<ApiDataResponse>(
       `${environment.apiUrl}transactions${queryParam ? `?${queryParam}`: ''}`,
+        payload
+    );
+  }
+
+  updateTransaction(payload, id: string, token?: string, queryParamsObject?: any) {
+    const authToken = token ? token : this.auth.accessToken.value;
+    const queryParam = this.util.generateQueryParams(queryParamsObject);
+    return this.http.patch<ApiDataResponse>(
+      `${environment.apiUrl}transactions/${id}${queryParam ? `?${queryParam}`: ''}`,
         payload
     );
   }
@@ -141,6 +158,15 @@ export class BackendService {
     const queryParam = this.util.generateQueryParams(queryParamsObject);
     return this.http.post<ApiDataResponse>(
       `${environment.apiUrl}feedbacks${queryParam ? `?${queryParam}`: ''}`,
+        payload
+    );
+  }
+  
+  updateFeedback(payload, id: string, token?: string, queryParamsObject?: any) {
+    const authToken = token ? token : this.auth.accessToken.value;
+    const queryParam = this.util.generateQueryParams(queryParamsObject);
+    return this.http.patch<ApiDataResponse>(
+      `${environment.apiUrl}feedbacks/${id}${queryParam ? `?${queryParam}`: ''}`,
         payload
     );
   }
