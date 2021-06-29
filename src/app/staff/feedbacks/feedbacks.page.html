@@ -13,10 +13,10 @@
         <div class="dash list-body" *ngIf="!isLoading">
           <ion-list *ngIf="feedbacks?.length">
             <div *ngFor="let feedback of feedbacks; let idx = index" (click)="showFeedback(feedback, idx)">
-              <h4><strong>By:</strong> {{feedback.user.first_name}} {{feedback.user.surname}}</h4>
+              <h4><strong>By:</strong> {{feedback.sender.first_name}} {{feedback.sender.surname}}</h4>
               <p>
-                {{feedback.user?.phone}}<br/>
-                {{feedback.user?.address}}
+                {{feedback.sender?.phone}}<br/>
+                {{feedback.sender?.address}}
               </p>
               <ion-item>
                 <ion-label>{{ feedback.message }}</ion-label>
