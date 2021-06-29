@@ -57,7 +57,7 @@
           <ion-list *ngIf="collectionDates?.length">
             <ion-item *ngFor="let collection of collectionDates; let idx = index">
               <ion-label>{{collection.location}} <small>({{collection.date}})</small></ion-label>
-              <ion-icon slot="end" name="ellipsis-horizontal"></ion-icon>
+              <ion-icon slot="end" class="d-none" name="ellipsis-horizontal"></ion-icon>
             </ion-item>
           </ion-list>
           <div class="notice-message" *ngIf="!collectionDates?.length"> No record found.</div>

@@ -12,11 +12,18 @@
       <div class="dash-task-list">
         <div class="dash list-body" *ngIf="!isLoading">
           <ion-list *ngIf="feedbacks?.length">
-            <ion-item *ngFor="let feedback of feedbacks; let idx = index" (click)="showFeedback(feedback, idx)">
-              <ion-label>{{ feedback.message }}</ion-label>
-              <span class="float-end status {{feedback.status == 'read'? 'success' : 'pending'}}">{{feedback.status}}</span>
-              <ion-icon slot="end" name="ellipsis-horizontal"></ion-icon>
-            </ion-item>
+            <div *ngFor="let feedback of feedbacks; let idx = index" (click)="showFeedback(feedback, idx)">
+              <h4><strong>By:</strong> {{feedback.sender.first_name}} {{feedback.sender.surname}}</h4>
+              <p>
+                {{feedback.sender?.phone}}<br/>
+                {{feedback.sender?.address}}
+              </p>
+              <ion-item>
+                <ion-label>{{ feedback.message }}</ion-label>
+                <span class="float-end status {{feedback.status == 'read'? 'success' : 'pending'}}">{{feedback.status}}</span>
+                <ion-icon slot="end" name="ellipsis-horizontal"></ion-icon>
+              </ion-item>
+            </div>
           </ion-list>
           <div class="notice-message" *ngIf="!feedbacks?.length"> No record found.</div>
         </div>

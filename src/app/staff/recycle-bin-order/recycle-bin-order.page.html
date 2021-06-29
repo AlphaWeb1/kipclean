@@ -13,8 +13,13 @@
       <ion-list *ngIf="modelService.orders?.length">
         <div class="inner-item" *ngFor="let order of modelService.orders; let idx = index">
           <div class="inner-item-top">
+            <h4><strong>By:</strong> {{order.user.first_name}} {{order.user.surname}}</h4>
+            <p>
+              {{order.user?.phone}}<br/>
+              {{order.user?.address}}
+            </p>
             <ion-item>
-              <ion-icon slot="start" name="trash"></ion-icon>
+              <ion-icon slot="start" class="green-trash" name="trash"></ion-icon>
               <ion-label>{{order.unit}} Unit <small>(₦{{order.amount}})</small></ion-label>
               <span class="float-end status {{ order.status === 'SUCCESS' || order.status === 'COMPLETED' ? 'success' : 'pending'}}">{{ order.status}}</span>
             </ion-item>
