@@ -12,7 +12,7 @@
     <div class="order-body" *ngIf="!isLoading">
       <ion-list *ngIf="modelService.orders?.length">
         <ion-item *ngFor="let order of modelService.orders; let idx = index">
-          <ion-icon slot="start" name="trash"></ion-icon>
+          <ion-icon slot="start" class="green-trash" name="trash"></ion-icon>
           <ion-label>{{order.unit}} Unit <small>(₦{{order.amount}})</small></ion-label>
           <span class="float-end status {{ order.status == 'SUCCESS' || order.status === 'COMPLETED' ? 'success' : 'pending'}}">{{ order.status}}</span>
         </ion-item>

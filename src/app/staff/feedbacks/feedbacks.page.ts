@@ -76,6 +76,8 @@ export class FeedbacksPage implements OnInit {
       this.feedbacks = [];
         if (res?.data) {
           const feedbacks = res.data;
+          console.log(feedbacks);
+          
           feedbacks.forEach(feedback => feedback.date_string = dayjs(feedback.createdAt).format('ddd, D MMM YYYY') );
           this.feedbacks = feedbacks;
           this.isLoading = false;

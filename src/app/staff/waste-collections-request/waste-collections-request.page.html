@@ -13,6 +13,11 @@
           <ion-list *ngIf="wasteCollections?.length">
             <div class="inner-item" *ngFor="let wastecoll of wasteCollections; let idx = index">
               <div class="inner-item-top">
+                <h4><strong>By:</strong> {{wastecoll.user.first_name}} {{wastecoll.user.surname}}</h4>
+                <p>
+                  {{wastecoll.user?.phone}}<br/>
+                  {{wastecoll.user?.address}}
+                </p>
                 <ion-item>
                   <ion-label>{{wastecoll.unit}} Months <span class="float-end">₦{{wastecoll.amount}}</span> ({{wastecoll.reference}})</ion-label>
                   <span class="float-end status {{ wastecoll.status === 'SUCCESS' || wastecoll.status === 'COMPLETED' ? 'success' : 'pending'}}">{{ wastecoll.status}}</span>
