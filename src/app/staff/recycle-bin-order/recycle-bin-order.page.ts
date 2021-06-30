@@ -44,7 +44,7 @@ export class RecycleBinOrderPage implements OnInit {
       res => {
         this.modelService.orders = [];
         if (res?.data) {
-          this.modelService.orders = res.data.filter(transaction => transaction.type === 'RECYCLE BIN ORDER');
+          this.modelService.orders = res.data.filter(transaction => transaction.type === 'RECYCLE BIN ORDER').reverse();
           this.isLoading = false;
         }
       },
