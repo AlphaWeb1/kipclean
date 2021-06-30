@@ -32,7 +32,7 @@ export class WasteCollectionsRequestPage implements OnInit {
     this.backendService.getAllTransactions().subscribe(
       res => {
         if (res?.data) {
-          this.wasteCollections = res.data.filter(transaction => transaction.type === 'WASTE COLLECTION');
+          this.wasteCollections = res.data.filter(transaction => transaction.type === 'WASTE COLLECTION').reverse();
 
           this.wasteCollections.forEach( async (wasteCollection) => {
             wasteCollection.expiredDate = dayjs(wasteCollection.createdAt).add(wasteCollection.unit, 'month');

@@ -78,7 +78,7 @@ export class FeedbacksPage implements OnInit {
           const feedbacks = res.data;
           
           feedbacks.forEach(feedback => feedback.date_string = dayjs(feedback.createdAt).format('ddd, D MMM YYYY') );
-          this.feedbacks = feedbacks;
+          this.feedbacks = feedbacks.reverse();
           this.isLoading = false;
         }
       },
